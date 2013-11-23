@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteRule ^([^/]*)_([^/]*).html$ index.php?route=page/detail&sitemapid=$1 [L] 
+RewriteRule ^([^/]*)/([^/]*)_([^/]*).html?$ index.php?route=page/detail&sitemapid=$1&id=$2 [L] 
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)_([^/]*).html?$ index.php?route=page/detail&sitemapid=$1&$2=$3 [L] 
+RewriteRule ^([^/]*).html$ index.php?route=page/detail&sitemapid=$1 [L] 
+RewriteRule ^([^/]*)/([^/]*).html?$ index.php?route=page/detail&sitemapid=$1&id=$2 [L] 
+RewriteRule ^([^/]*)/([^/]*)/([^/]*).html?$ index.php?route=page/detail&sitemapid=$1&$2=$3 [L]
