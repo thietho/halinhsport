@@ -21,6 +21,11 @@ class ControllerModuleProduct extends Controller
 	
 	}
 	
+	public function setViewType()
+	{
+		$viewtype = $this->request->get['viewtype'];
+		$_SESSION['productview'] = $viewtype;
+	}
 	
 }
 ?>
