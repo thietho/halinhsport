@@ -385,7 +385,6 @@ input.ben-button:active {border-style: inset;}
 
 /* Logo */
 #ben-logo {	
-	padding: 5px 15px 5px 0;
 	margin-right: 40px;
 }
 #ben-logo img {}
@@ -696,4 +695,29 @@ ul#menu li ul li div:hover {
 #ben-view-type
 {
 	padding:5px;	
+}
+#ben-top-menu
+{
+	position:absolute;
+	margin-left:420px;
+	margin-top:31px;
+}
+#ben-top-menu li
+{
+	list-style:none;
+	display:inline;
+	padding:5px;
+}
+#ben-top-terms
+{
+	position:absolute;
+	margin-left:440px;
+	margin-top:66px;
+	width:863px;
+}
+#ben-top-terms a
+{
+	font-weight:bold;
+	font-size:1.2em;
+	padding:5px 20px 5px 5px;
 }
