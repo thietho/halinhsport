@@ -15,6 +15,13 @@ class ControllerModuleProductlist extends Controller
 		if($sitemapid == "")
 			$sitemapid = $this->document->sitemapid;
 		
+		
+		$tp = array(
+						'template' => "module/information.tpl",
+						);
+		$arr = array($this->member->getSiteId().$sitemapid,$tp);
+		
+		$this->data['content'] = $this->loadModule('module/block','showContent',$arr);
 		$siteid = $this->user->getSiteId();
 		$this->data['sitemap'] = $this->model_core_sitemap->getItem($sitemapid, $siteid);
 		$this->data['sitemap']['breadcrumb'] = $this->model_core_sitemap->getBreadcrumb($sitemapid, $siteid);
@@ -133,6 +140,8 @@ class ControllerModuleProductlist extends Controller
 			
 			
 		}
+		
+		
 		$this->data['status'] = $template['status'];
 		$this->data['paging'] = $template['paging'];
 		$this->data['sorting'] = $template['sorting'];

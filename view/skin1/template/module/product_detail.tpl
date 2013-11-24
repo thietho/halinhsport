@@ -142,9 +142,7 @@ $("#ben-next").click(function(){
         <h2><?php echo $post['title']?></h2>
         <?php if($post['noted']!="") echo "<h4>".$post['noted']."</h4>";?>
         
-        <!--<a href="http://www.facebook.com/sharer/sharer.php?u=<?php echo $post['link']?>" target="_blank">
-    		<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>facebook.gif" />
-    	</a>-->
+        
         <div class="fb-like" data-href="<?php echo $post['link']?>" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
         
         <div class="ben-post-body">
