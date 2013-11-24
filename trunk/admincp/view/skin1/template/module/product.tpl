@@ -23,6 +23,7 @@
                 <a class="button" onclick="pro.viewListSelect()">Xem danh sách</a>
                 <?php if($this->user->checkPermission("module/product/update")==true){ ?>
                 <a class="button" onclick="pro.updatePosition()"><?php echo $button_updateposition?></a>&nbsp;
+                <a class="button" href="?route=module/information&sitemapid=<?php echo $sitemapid?>&goback=module/product">Biên tập nội dung</a>&nbsp;
                 <?php } ?>
                 <?php if($this->user->checkPermission("module/product/deleted")==true){ ?>
                 <a class="button" onclick="pro.deleteProduct()">Xóa</a>&nbsp;

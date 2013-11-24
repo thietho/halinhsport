@@ -34,7 +34,7 @@ class ControllerCorePostcontent extends Controller
 		
 		$route = $this->getRoute();
 		$sitemapid = $this->request->get['sitemapid'];
-		
+		$goback = $this->request->get['goback'];
 		$siteid = $this->user->getSiteId();
 
 		$this->load->language($route);
@@ -235,6 +235,12 @@ class ControllerCorePostcontent extends Controller
 			$this->data['hasSubInfor'] = false;
 			//$this->data['post']['title'] = $sitemap['sitemapname'];
 			$this->data['DIR_CANCEL'] = HTTP_SERVER."?route=core/content";
+			if($goback!="")
+			{
+				
+				$this->data['DIR_CANCEL'] = HTTP_SERVER."?route=".$goback."&sitemapid=".$sitemapid;
+			}
+			
 		}
 		if($route == "module/register")
 		{
@@ -511,7 +517,7 @@ class ControllerCorePostcontent extends Controller
 		$str = "";
 		
 		$route = $this->getRoute();
-		$sitemaps = $this->model_core_sitemap->getListByParent($parentid, $siteid, "Active");
+		$sitemaps = $this->model_core_sitemap->getListByParent($parentid, $siteid);
 		
 		foreach($sitemaps as $item)
 		{

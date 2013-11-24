@@ -8,7 +8,6 @@ class ControllerCorePostcontent extends Controller
 		$this->data['permissionEdit'] = true;
 		$this->data['permissionDelete'] = true;
 		
-		$sitemapid = $this->request->get['sitemapid'];
 		
 		if(!$this->user->hasPermission($sitemapid, "access"))
 		{
@@ -69,7 +68,7 @@ class ControllerCorePostcontent extends Controller
 		}
 		$route = $this->getRoute();
 		$sitemapid = $this->request->get['sitemapid'];
-		
+		$goback = $this->request->get['goback'];
 		$siteid = $this->user->getSiteId();
 
 		$this->load->language($route);
@@ -177,7 +176,7 @@ class ControllerCorePostcontent extends Controller
 		$this->data['hasSubInfor'] = false;
 		//Video
 		$this->data['hasVideo'] = false;
-		$this->data['DIR_CANCEL'] = HTTP_SERVER."index.php?route=".$route."&sitemapid=".$sitemapid;
+		
 		//Gallery
 		$this->data['hasTabImages'] = false;
 		$this->data['hasTabVideos'] = false;
@@ -231,6 +230,7 @@ class ControllerCorePostcontent extends Controller
 		{
 			$this->data['hasSubInfor'] = false;
 		}*/
+		$this->data['DIR_CANCEL'] = HTTP_SERVER."?route=".$route."&sitemapid=".$sitemapid;
 		if($route == "module/information")
 		{
 			
@@ -244,6 +244,7 @@ class ControllerCorePostcontent extends Controller
 			$this->data['hasSubInfor'] = false;
 			//$this->data['post']['title'] = $sitemap['sitemapname'];
 			$this->data['DIR_CANCEL'] = HTTP_SERVER."index.php";
+			
 		}
 		if($route == "module/register")
 		{
