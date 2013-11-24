@@ -589,7 +589,7 @@ function save()
 		function(data){
 			if(data=="true")
 			{
-				window.location = "<?php echo $DIR_CANCEL.'&page='.$_GET['page']?>"
+				window.location = "<?php echo $DIR_CANCEL.'&page='.$_GET['page']?>";
 				
 			}
 			else

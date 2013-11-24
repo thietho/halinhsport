@@ -1,7 +1,7 @@
 <?php
 class ControllerSitebarCatalogue extends Controller
 {
-	public function index($sitemapid = "",$status = "Addon" )
+	public function index($sitemapid = "",$status = "" )
 	{
 		$siteid = $this->member->getSiteId();
 		$this->data['sitemap'] = $this->model_core_sitemap->getItem($sitemapid, $siteid);
