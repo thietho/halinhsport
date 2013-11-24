@@ -1,7 +1,27 @@
+<?php echo $content?>
 <?php
 if(count($medias))
 {
 ?>
+<?php if($sorting){ ?>
+   	<div class="ben-post">
+        <select id="order" class="ben-textbox ben-right" onchange="window.location = '?order='+this.value">
+            <option value="new">Mới</option>
+            <option value="gt">Giá tăng dần</option>
+            <option value="gg">Giá giảm dần</option>
+            <option value="az">Tên: A-Z</option>
+        </select>
+<script language="javascript">
+$('#order').val('<?php echo $_GET["order"]?>');
+</script>
+        <div class="clearer">&nbsp;</div>
+        
+    </div>
+    	<?php } ?>
+        <?php if($paging){ ?>
+    <?php echo $pager?>
+    <div class="clearer">&nbsp;</div>
+    <?php } ?>
 <div id="listpoduct">
 	<?php foreach($medias as $media) {?>
     <div class="ben-left product link_hover" data-tooltip="sticky1" ref="<?php echo $media['imagetpreview']?>" title="<?php echo $media['keyword']?>">
