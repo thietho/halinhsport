@@ -364,7 +364,7 @@ input.ben-button:active {border-style: inset;}
 /* Wrapper */
 #ben-main {
 	margin: 0 auto;
-	width: 1000px;
+	width: 1300px;
 }
 
 
@@ -378,7 +378,7 @@ input.ben-button:active {border-style: inset;}
 /* Optional Top */
 #ben-top{
 	margin: 0 auto;
-	width: 1000px;
+	width: 1300px;
 	padding-bottom: 0px;
 }
 
@@ -485,17 +485,17 @@ display:block;
 
 
 /*---------- BODY AREA ------------*/
-#ben-content {margin: 24px auto; width:1000px}
+#ben-content {margin: 24px auto; width:1300px}
 
 #ben-maincontent{}
 .ben-two-columns #ben-maincontent{width: 750px;}
-.ben-three-columns #ben-maincontent{width:570px; margin-left:5px;}
+.ben-three-columns #ben-maincontent{width:896px; margin:0 2px;}
 .ben-three-columns-right #ben-maincontent{width:520px; margin-right:20px}
 
 
 /* Sidebar */
 #ben-sidebar{} /*Div chua 2 sidebar*/
-.ben-sidebar{width:210px;}
+.ben-sidebar{width:200px;}
 
 
 /* Columns */
