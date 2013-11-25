@@ -24,10 +24,7 @@ class ControllerModulePagelist extends Controller
 		{
 			$medias = $this->model_core_media->getPaginationList($queryoptions, $step, $to);
 			
-			if(count($medias) == 1)
-			{
-				
-			}
+			
 			
 			$this->data['medias'] = array();
 			
@@ -45,15 +42,22 @@ class ControllerModulePagelist extends Controller
 					$imagethumbnail = HelperImage::resizePNG($media['imagepath'], $template['width'], $template['height']);
 				}
 	
-				
-				$this->data['medias'][] = array(
+				$media['summary'] = html_entity_decode($media['summary']);
+				$media['link']= $link;
+				$media['properties']= $properties;
+				$media['imagethumbnail']= $imagethumbnail;
+				$media['imagetpreview']= $imagetpreview;
+				$media['statusdate']= $this->date->formatMySQLDate($media['statusdate'], 'longdate', "/");
+			
+				$this->data['medias'][] = $media;
+				/*$this->data['medias'][] = array(
 					'mediaid' => $media['mediaid'],
 					'title' => $media['title'],
 					'summary' => $media['summary'],
 					'imagethumbnail' => $imagethumbnail,
 					'statusdate' => $this->date->formatMySQLDate($media['statusdate'], 'longdate', "/"),
 					'link' => $link
-				);
+				);*/
 				
 			}
 			

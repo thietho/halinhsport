@@ -1,33 +1,42 @@
-				<div class="ben-home-news">
-                    <div class="bbb"><a href="<?php echo $this->document->createLink($sitemap['sitemapid'])?>"><?php echo $sitemap['sitemapname']?></a></div>
-                    <div>
-                        
-<?php foreach($medias as $key => $media) {?>
-	
-                        <div class="ben-news-item ben-left">
-                        	<table>
-                            	<tr>
-                                	<td>
-                                    	<a href="<?php echo $media['link']?>"><img src="<?php echo $media['imagethumbnail']?>" /></a>
-                                        
-                                    </td>
-                                    <td>
-                                    	<p>
-                                            <strong><a href="<?php echo $media['link']?>"><?php echo $media['title']?></a></strong><br/>
-                                            <?php echo $this->string->getTextLength($media['summary'],0,15)?>...
-                                        </p>
-                                    	<p class="ben-right"><a class="ben-right do" href="<?php echo $media['link']?>">Chi tiết >></a></p>
-                            			<div class="clearer"></div>
-                                    </td>
-                                </tr>
-                            </table>                	
-                            
-                            
-                        </div>
-								
-<?php } ?>                	
-						<div class="clearer">&nbsp;</div>
-                    </div>
-                </div>
-                <div class="clearer">&nbsp;</div>
-							
+<div class="ben-home-news">
+    
+    <table class="tabletop">
+        <tr>
+            <td width="520px">
+                <a href="<?php echo $medias[0]['link']?>"><img src="<?php echo $medias[0]['imagethumbnail']?>" /></a>
+                <p>
+                    <h4><a href="<?php echo $medias[0]['link']?>"><?php echo $medias[0]['title']?></a></h4>
+                    <?php echo $medias[0]['summary']?>
+                </p>
+            </td>
+            <td>
+            	<table>
+                <?php for($i=1;$i<count($medias)&& $i<9;$i++){ ?>
+                	<tr>
+                    	<td><a href="<?php echo $medias[$i]['link']?>"><img src="<?php echo $medias[$i]['imagethumbnail']?>" width="50px"/></a></td>
+                        <td><a href="<?php echo $medias[$i]['link']?>"><?php echo $medias[$i]['title']?></a></td>
+                    </tr>
+                <?php } ?>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table>
+    	<tr>
+    	<?php for($i=9;$i<count($medias);$i++){ ?>
+        	<td style="width:25%">
+            	<table>
+                	<tr height="150px" valign="middle">
+                    	<td align="center"><a href="<?php echo $medias[$i]['link']?>"><img src="<?php echo $medias[$i]['imagethumbnail']?>" width="150px"/></a></td>
+                    </tr>
+                    <tr>
+                    	<td align="center"><a href="<?php echo $medias[$i]['link']?>"><?php echo $medias[$i]['title']?></a></td>
+                    </tr>
+                </table>
+            </td>
+        <?php }?>
+        </tr>
+    </table>
+</div>
+
+            

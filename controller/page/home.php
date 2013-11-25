@@ -16,14 +16,27 @@ class ControllerPageHome extends Controller
 			$arr = array('menu-chinh');
 			$this->data['mainmenu'] = $this->loadModule('common/header','showMenu',$arr);
 			//Banner home
-			$template = array(
+			/*$template = array(
 						  'template' => "home/banner.tpl",
 						  'width' => 548,
 						  'height' =>548
 						  );
 		
 			$arr = array("bannerhome",0,"",$template);
-			$this->data['bannerhome'] = $this->loadModule('module/block','getList',$arr);
+			$this->data['bannerhome'] = $this->loadModule('module/block','getList',$arr);*/
+			//Tin nóng
+			$template = array(
+						  'template' => "home/news_list.tpl",
+						  'width' => 514,
+						  'height' =>514,
+						  
+						  );
+			
+			$medias = $this->getHomeMedias('module/news');
+			
+			$arr = array("",13,"",$template,$medias);
+			$this->data['newshome'] = $this->loadModule('module/productlist','index',$arr);
+			
 			//San pham moi
 			$template = array(
 						  'template' => "module/product_list.tpl",
@@ -33,9 +46,9 @@ class ControllerPageHome extends Controller
 						  'sorting' =>false
 						  );
 			
-			$medias = $this->getProduct();
+			$medias = $this->getHomeMedias('module/product');
 			
-			$arr = array("",6,"",$template,$medias);
+			$arr = array("",20,"",$template,$medias);
 			$this->data['producthome'] = $this->loadModule('module/productlist','index',$arr);
 			
 			/*$arr = array("gioithieu");
@@ -58,31 +71,44 @@ class ControllerPageHome extends Controller
 		//Left sitebar
 		$arr = array('san-pham');
 		$this->data['leftsitebar']['produtcategory'] = $this->loadModule('sitebar/catalogue','index',$arr);
-		$this->data['leftsitebar']['supportonline'] = $this->loadModule('sitebar/supportonline');
+		$this->data['leftsitebar']['search'] = $this->loadModule('sitebar/searchproduct');
+		$this->data['leftsitebar']['dknhantinh'] = $this->loadModule('sitebar/dangkynhantin');
+		
 		//$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
-		$this->data['leftsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
+		//$this->data['leftsitebar']['weblink'] = $this->loadModule('sitebar/weblink');
 		$this->data['leftsitebar']['hitcounter'] = $this->loadModule('sitebar/hitcounter');
 		
 		//Rigth sitebar
-		$this->data['rightsitebar']['login'] = $this->loadModule('sitebar/login');
-		$this->data['rightsitebar']['search'] = $this->loadModule('sitebar/search');
 		$this->data['rightsitebar']['cart'] = $this->loadModule('sitebar/cart');
-		$this->data['rightsitebar']['banner'] = $this->loadModule('sitebar/banner');
-		$this->data['rightsitebar']['question'] = $this->loadModule('sitebar/question');
+		$this->data['rightsitebar']['login'] = $this->loadModule('sitebar/login');
+		$this->data['rightsitebar']['supportonline'] = $this->loadModule('sitebar/supportonline');
+		
+		$template = array(
+						  'template' => "sitebar/news.tpl",
+						  'width' => 50,
+						  'height' =>50
+						  
+						  );
+		$arr = array('tin-tuc-san-pham',10,'',$template);
+		$this->data['rightsitebar']['newsproduct'] = $this->loadModule('sitebar/news','index',$arr);
+		//$this->data['rightsitebar']['search'] = $this->loadModule('sitebar/search');
+		
+		//$this->data['rightsitebar']['banner'] = $this->loadModule('sitebar/banner');
+		//$this->data['rightsitebar']['question'] = $this->loadModule('sitebar/question');
 	}
 	
-	function getProduct()
+	function getHomeMedias($mediatype)
 	{
 		$this->load->model('core/sitemap');
 		$this->load->model('core/media');
-		$siteid = $this->member->getSiteId();
-		$sitemaps = $this->model_core_sitemap->getListByModule("module/product", $siteid);
-		$arrsitemapid = $this->string->matrixToArray($sitemaps,"sitemapid");
+		//$siteid = $this->member->getSiteId();
+		//$sitemaps = $this->model_core_sitemap->getListByModule("module/product", $siteid);
+		//$arrsitemapid = $this->string->matrixToArray($sitemaps,"sitemapid");
 		$queryoptions = array();
 		$queryoptions['mediaparent'] = '';
-		$queryoptions['mediatype'] = 'module/product';
-		$options['refersitemap'] = $arrsitemapid;
-		$data = $this->model_core_media->getPaginationList($options, $step=0, $to=9);
+		$queryoptions['mediatype'] = $mediatype;
+		$queryoptions['refersitemap'] = '%';
+		$data = $this->model_core_media->getPaginationList($queryoptions, $step=0, $to=0);
 		
 		return $data;
 	}

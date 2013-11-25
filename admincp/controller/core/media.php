@@ -130,21 +130,12 @@ class ControllerCoreMedia extends Controller
 				$this->data['medias'][$i]['imagepreview'] = "<img width=100 src='".HelperImage::resizePNG($this->data['medias'][$i]['imagepath'], 100, 100)."' >";
 				
 			}
-			if(count($sitemap)==0)
-			{
-				$mediaid = $this->data['medias'][$i]['mediaid'];
-				$sitemapid = str_replace($this->user->getSiteId(),"",$mediaid);
-				$sitemap = $this->model_core_sitemap->getItem($sitemapid,$this->user->getSiteId());
-				
-				$this->data['medias'][$i]['link_edit'] = $this->url->http($sitemap['moduleid'].'/update&sitemapid='.$sitemapid);
-				$this->data['medias'][$i]['text_edit'] = "Edit";
-			}
-			else
-			{
-				$this->data['medias'][$i]['link_edit'] = $this->url->http($sitemap['moduleid'].'/update&mediaid='.$this->data['medias'][$i]['mediaid']);
+			
+			
+			$this->data['medias'][$i]['link_edit'] = $this->url->http($this->data['medias'][$i]['mediatype'].'/update&mediaid='.$this->data['medias'][$i]['mediaid']);
 				$this->data['medias'][$i]['text_edit'] = "Edit";	
-			}
-			$this->data['medias'][$i]['type'] = $sitemap['moduleid'];
+			
+			//$this->data['medias'][$i]['type'] = $sitemap['moduleid'];
 			$this->data['medias'][$i]['typename'] = $this->model_core_sitemap->getModuleName($sitemap['moduleid']);
 			
 			
