@@ -11,7 +11,7 @@
      	        <input type="button" value="<?php echo $button_cancel ?>" class="button" onclick="linkto('?route=module/link&sitemapid=<?php echo $sitemap['sitemapid']?>')"/>   
      	        <input type="hidden" name="mediaid" value="<?php echo $item['mediaid']?>">
                 <input type="hidden" id="status" name="status" value="<?php echo $item['status']?>" />
-             	<input type="hidden" id="mediatype" name="mediatype" value="<?php echo $item['mediatype']?>" />
+             	<input type="hidden" id="mediatype" name="mediatype" value="module/link" />
              	<input type="hidden" id="refersitemap" name="refersitemap" value="<?php echo $item['refersitemap']?>" />
                 
                 <input type="hidden" id="handler" />

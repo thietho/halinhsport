@@ -1,6 +1,7 @@
 <div class="ben-section">
+	<div class="ben-section-title"><div class="title">Giỏ hàng</div></div>
     <div class="ben-section-content">
-    	<div class="ben-section-title"><div class="title">Giỏ hàng</div></div>
+    	
         <div id="sitebarcartlist">
         </div>
         <a href="<?php echo $this->document->createLink('cart')?>">Xem giỏ hàng</a>

@@ -547,7 +547,7 @@ display:block;
 #ben-maincontent .ben-section{}
 
 .ben-section-content{border: thin solid #CCCCCC;}
-.ben-sidebar .ben-section-content{}
+.ben-sidebar .ben-section-content{padding:5px;}
 #ben-maincontent .ben-section-content{padding:5px;margin-bottom:5px;}
 
 .ben-section-title {

@@ -47,12 +47,16 @@ class ControllerCommonSitemapmenu extends Controller
 			{
 				case 'module/information':
 				case 'module/contact':
+				case 'module/location':
 				
 					$link='<a class="left sitebar" href="?route='.$item['moduleid']."&sitemapid=".$item['sitemapid'].'" >'.$item['sitemapname'].'</a>';
 					break;
 				case 'module/product':
 				case 'module/news':
 				case 'module/gallery':
+				case 'module/banner':
+				case 'module/link':
+				
 					$link='<a class="left" href="?route='.$item['moduleid']."&sitemapid=".$item['sitemapid'].'">'.$item['sitemapname'].'</a>';
 					break;
 			}
