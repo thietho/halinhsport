@@ -36,15 +36,7 @@
         </div>
         <div class="clearer">&nbsp;</div>
         
-        <div class="ben-navigation">
-    
-            <ul id="ben-main-nav">
-                <?php echo $mainmenu?>
-            </ul>
-    
-            <div class="clearer">&nbsp;</div>
-    
-        </div>
+        
         
     </div>
 </div>

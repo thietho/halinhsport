@@ -13,6 +13,9 @@ class ControllerPageDetail extends Controller
 	{
 		if($this->cachehtml->iscacht($this->name) == false)
 		{
+			$arr = array('menu-chinh');
+			$this->data['mainmenu'] = $this->loadModule('common/header','showMenu',$arr);
+			
 			$this->load->model("core/sitemap");
 			$this->document->sitemapid = $this->request->get['sitemapid'];
 			$siteid = $this->member->getSiteId();

@@ -13,6 +13,8 @@ class ControllerPageHome extends Controller
 	{
 		if($this->cachehtml->iscacht($this->name) == false)
 		{
+			$arr = array('menu-chinh');
+			$this->data['mainmenu'] = $this->loadModule('common/header','showMenu',$arr);
 			//Banner home
 			$template = array(
 						  'template' => "home/banner.tpl",
