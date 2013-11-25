@@ -20,13 +20,13 @@ class ModelCoreMedia extends ModelCoreFile
 	
 	public function getList($where="", $from=0, $to=0,$order="")
 	{
-		if($order == "")
-			$order = " Order by position, statusdate DESC";
+		
 		
 		$sql = "Select `media`.* 
 									from `media` 
 									where status like 'active' " . $where .$order ;
-		
+		if($order == "")
+			$order = " Order by position, statusdate DESC";
 		if($to > 0)
 		{
 			$sql .= " Limit ".$from.",".$to;

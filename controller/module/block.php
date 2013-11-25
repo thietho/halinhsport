@@ -56,7 +56,7 @@ class ControllerModuleBlock extends Controller
 				);
 				
 			}
-			
+			//print_r($this->data['medias']);
 			$querystring = "?route=page/detail&sitemapid=".$sitemapid;
 			
 			$pagelinks = $this->model_core_media->getPaginationLinks($index, $queryoptions, $querystring, $step, $to);

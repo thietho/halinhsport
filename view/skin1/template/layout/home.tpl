@@ -62,6 +62,9 @@ var HTTP_SERVER = '<?php echo HTTP_SERVER?>';
 <link rel="stylesheet" type="text/css" href="<?php echo HTTP_SERVER.DIR_CSS?>jquery.fancybox-1.3.4.css" media="screen" />
 <script type='text/javascript' language='javascript' src='<?php echo HTTP_SERVER.DIR_VIEW?>js/product.js'></script>
 <script type='text/javascript' language='javascript' src='<?php echo HTTP_SERVER.DIR_JS?>jquery-tooltip.js'></script>
+
+
+<script type="text/javascript" language="javascript" src="<?php echo HTTP_SERVER.DIR_JS?>jquery.carouFredSel-6.2.1.js"></script>
 <link rel='stylesheet' type='text/css' href='<?php echo HTTP_SERVER.DIR_VIEW?>css/stickytooltip.css'>
 
 <script type="text/javascript">
@@ -72,24 +75,24 @@ $(document).ready(function() {
 
 		
 
-		/*$(".zoom").fancybox({
+		$(".zoom").fancybox({
 			'overlayShow'	: true,
 			'transitionIn'	: 'elastic',
 			'transitionOut'	: 'elastic'
-		});*/
+		});
 
 		
 	});
 </script>
 <script language="javascript">
 $(function() {
-	/*$(".ben-datepicker").datepicker({
+	$(".ben-datepicker").datepicker({
 			changeMonth: true,
 			changeYear: true,
 			dateFormat: 'dd-mm-yy',
 			
 			});
-	});*/
+	});
 </script>
 
 
