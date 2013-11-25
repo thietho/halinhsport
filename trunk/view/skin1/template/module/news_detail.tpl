@@ -1,7 +1,5 @@
 <div class="ben-post">
-	<?php if($post['imagethumbnail'] !=""){ ?>
-	<img src='<?php echo $post['imagethumbnail']?>' class='ben-alignleft' />
-	<?php }?>
+	
     <h2><?php echo $post['title']?></h2>
     <div class="ben-post-date"><?php echo $post['statusdate']?></div>
     <div class="ben-post-body">
