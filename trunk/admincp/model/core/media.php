@@ -470,7 +470,7 @@ class ModelCoreMedia extends ModelCoreFile
 		$imagepath=$this->db->escape(@$data['imagepath']);
 		$fileid=(int)@$data['fileid'];
 		$filepath=$this->db->escape(@$data['filepath']);
-		$status=$this->db->escape(@$data['status']);;
+		//$status=$this->db->escape(@$data['status']);;
 		$groupkeys=$this->db->escape(@$data['groupkeys']);
 		$tagkeyword=$this->db->escape(@$data['tagkeyword']);
 		
@@ -507,7 +507,7 @@ class ModelCoreMedia extends ModelCoreFile
 						'fileid',
 						'filepath',
 						'groupkeys',
-						'status',
+						//'status',
 						'updateddate',
 						'noted'
 					);
@@ -537,7 +537,7 @@ class ModelCoreMedia extends ModelCoreFile
 						$fileid,
 						$filepath,
 						$groupkeys,
-						$status,
+						//$status,
 						$updateddate,
 						$noted
 					);

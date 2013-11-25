@@ -1,6 +1,7 @@
 <div class="ben-section">
+	<div class="ben-section-title"><div class="title">Tìm kiếm nâng cao</div></div>
     <div id="ben-searchform" class="ben-section-content">
-    	<div class="ben-section-title"><div class="title">Tìm kiếm nâng cao</div></div>
+    	
         <p>
             <select name="loaisp" id="loaisp">
                 <option value="">Loại sản phẩm</option>

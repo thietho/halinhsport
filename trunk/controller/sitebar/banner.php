@@ -38,6 +38,7 @@ class ControllerSitebarBanner extends Controller
 				'mediaid' => $media['mediaid'],
 				'title' => $media['title'],
 				'summary' => $media['summary'],
+				'imagepath' => $media['imagepath'],
 				'imagethumbnail' => $imagethumbnail,
 				'statusdate' => $this->date->formatMySQLDate($media['statusdate'], 'longdate', "/"),
 				'link' => $link

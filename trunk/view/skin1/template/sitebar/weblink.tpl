@@ -1,14 +1,15 @@
 <div class="ben-section">
 
-	<div class="ben-section-title"><?php echo $sitemap['sitemapname']?></div>
+	
     
     <div class="ben-section-content">
-    	<select onchange="window.open( this.value,'','','')">
-        	<option value=""></option>
-        	<?php foreach($medias as $media) {?>
-            <option value="<?php echo $media['weblink']?>"><?php echo $media['title']?></option>
-            <?php } ?>
-        </select>
+    	
+        	
+        <?php foreach($medias as $media) {?>
+        <a href="<?php echo $media['weblink']?>"><img src="<?php echo HTTP_IMAGE.$media['imagepath']?>" title="<?php echo $media['title']?>" alt="<?php echo $media['title']?>" width="188px"/></a>
+        
+        <?php } ?>
+        
     	
     	
     </div>
