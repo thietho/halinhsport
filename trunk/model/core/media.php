@@ -26,12 +26,15 @@ class ModelCoreMedia extends ModelCoreFile
 									from `media` 
 									where status like 'active' " . $where .$order ;
 		if($order == "")
+		{
 			$order = " Order by position, statusdate DESC";
+			$sql .= $order;
+		}
 		if($to > 0)
 		{
 			$sql .= " Limit ".$from.",".$to;
 		}
-		
+		 
 		$query = $this->db->query($sql);
 		return $query->rows;
 	}
