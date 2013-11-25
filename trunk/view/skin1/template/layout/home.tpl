@@ -63,54 +63,38 @@ var HTTP_SERVER = '<?php echo HTTP_SERVER?>';
 <script type='text/javascript' language='javascript' src='<?php echo HTTP_SERVER.DIR_VIEW?>js/product.js'></script>
 <script type='text/javascript' language='javascript' src='<?php echo HTTP_SERVER.DIR_JS?>jquery-tooltip.js'></script>
 <link rel='stylesheet' type='text/css' href='<?php echo HTTP_SERVER.DIR_VIEW?>css/stickytooltip.css'>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-45593057-1', 'mylanbeauty.net');
-  ga('send', 'pageview');
-
-</script>
 <script type="text/javascript">
-	$(document).ready(function() {
+$(document).ready(function() {
 		/*
 		*   Examples - images
 		*/
 
 		
 
-		$(".zoom").fancybox({
+		/*$(".zoom").fancybox({
 			'overlayShow'	: true,
 			'transitionIn'	: 'elastic',
 			'transitionOut'	: 'elastic'
-		});
+		});*/
 
 		
 	});
 </script>
 <script language="javascript">
 $(function() {
-	$(".ben-datepicker").datepicker({
+	/*$(".ben-datepicker").datepicker({
 			changeMonth: true,
 			changeYear: true,
 			dateFormat: 'dd-mm-yy',
 			
 			});
-	});
+	});*/
 </script>
 
 
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
 <div style="display:none"><?php echo $meta_keyword?></div>
 <div id="ben-body">
     <div id="ben-main">
