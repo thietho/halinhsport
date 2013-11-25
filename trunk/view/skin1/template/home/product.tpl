@@ -1,5 +1,4 @@
-<script type="text/javascript" src="<?php echo HTTP_SERVER.DIR_JS?>/java.js"></script>
-<script type="text/javascript" language="javascript" src="<?php echo HTTP_SERVER.DIR_JS?>jquery.carouFredSel-6.2.1.js"></script>
+
 <script type="text/javascript" language="javascript">
 	$(function() {
 		$('#sanpham_noibat').carouFredSel({

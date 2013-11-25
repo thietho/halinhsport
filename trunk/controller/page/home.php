@@ -16,14 +16,14 @@ class ControllerPageHome extends Controller
 			$arr = array('menu-chinh');
 			$this->data['mainmenu'] = $this->loadModule('common/header','showMenu',$arr);
 			//Banner home
-			/*$template = array(
+			$template = array(
 						  'template' => "home/banner.tpl",
-						  'width' => 548,
-						  'height' =>548
+						  'width' => 894,
+						  'height' =>894
 						  );
 		
 			$arr = array("bannerhome",0,"",$template);
-			$this->data['bannerhome'] = $this->loadModule('module/block','getList',$arr);*/
+			$this->data['bannerhome'] = $this->loadModule('module/block','getList',$arr);
 			//Tin nóng
 			$template = array(
 						  'template' => "home/news_list.tpl",

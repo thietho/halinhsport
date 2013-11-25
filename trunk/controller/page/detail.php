@@ -219,7 +219,19 @@ class ControllerPageDetail extends Controller
 					break;
 				}
 			}
+			//San pham noi bat
+			$template = array(
+						  'template' => "home/product.tpl",
+						  'width' => 150,
+						  'height' =>150,
+						  'paging' => false,
+						  'sorting' =>false
+						  );
 			
+			$medias = $this->getProduct('sanphamhot');
+			//print_r($medias);
+			$arr = array("",100000,"",$template,$medias);
+			$this->data['producthot'] = $this->loadModule('module/productlist','index',$arr);
 			$this->loadSiteBar();
 		}
 		$this->id="content";
@@ -257,6 +269,21 @@ class ControllerPageDetail extends Controller
 		
 		//$this->data['rightsitebar']['banner'] = $this->loadModule('sitebar/banner');
 		//$this->data['rightsitebar']['question'] = $this->loadModule('sitebar/question');
+	}
+	function getProduct($status)
+	{
+		$this->load->model('core/media');
+		//$siteid = $this->member->getSiteId();
+		//$sitemaps = $this->model_core_sitemap->getListByModule("module/product", $siteid);
+		//$arrsitemapid = $this->string->matrixToArray($sitemaps,"sitemapid");
+		$queryoptions = array();
+		$queryoptions['mediaparent'] = '';
+		$queryoptions['mediatype'] = 'module/product';
+		$queryoptions['refersitemap'] = '%';
+		$queryoptions['groupkeys'] = $status;
+		$data = $this->model_core_media->getPaginationList($queryoptions, $step=0, $to=0);
+		
+		return $data;
 	}
 }
 ?>
