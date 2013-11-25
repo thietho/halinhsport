@@ -548,7 +548,7 @@ display:block;
 
 .ben-section-content{border: thin solid #CCCCCC;}
 .ben-sidebar .ben-section-content{}
-#ben-maincontent .ben-section-content{padding:5px}
+#ben-maincontent .ben-section-content{padding:5px;margin-bottom:5px;}
 
 .ben-section-title {
 	background:url(../image/bg-section-tile.png) repeat-x;
