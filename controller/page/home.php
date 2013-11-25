@@ -51,6 +51,19 @@ class ControllerPageHome extends Controller
 			$arr = array("",20,"",$template,$medias);
 			$this->data['producthome'] = $this->loadModule('module/productlist','index',$arr);
 			
+			//San pham noi bat
+			$template = array(
+						  'template' => "home/product.tpl",
+						  'width' => 150,
+						  'height' =>150,
+						  'paging' => false,
+						  'sorting' =>false
+						  );
+			
+			$medias = $this->getProduct('sanphamhot');
+			//print_r($medias);
+			$arr = array("",100000,"",$template,$medias);
+			$this->data['producthot'] = $this->loadModule('module/productlist','index',$arr);
 			/*$arr = array("gioithieu");
 			$this->data['producthome'] = $this->loadModule('module/information','index',$arr);*/
 			//
@@ -100,7 +113,7 @@ class ControllerPageHome extends Controller
 	
 	function getHomeMedias($mediatype)
 	{
-		$this->load->model('core/sitemap');
+		
 		$this->load->model('core/media');
 		//$siteid = $this->member->getSiteId();
 		//$sitemaps = $this->model_core_sitemap->getListByModule("module/product", $siteid);
@@ -109,6 +122,22 @@ class ControllerPageHome extends Controller
 		$queryoptions['mediaparent'] = '';
 		$queryoptions['mediatype'] = $mediatype;
 		$queryoptions['refersitemap'] = '%';
+		$data = $this->model_core_media->getPaginationList($queryoptions, $step=0, $to=0);
+		
+		return $data;
+	}
+	
+	function getProduct($status)
+	{
+		$this->load->model('core/media');
+		//$siteid = $this->member->getSiteId();
+		//$sitemaps = $this->model_core_sitemap->getListByModule("module/product", $siteid);
+		//$arrsitemapid = $this->string->matrixToArray($sitemaps,"sitemapid");
+		$queryoptions = array();
+		$queryoptions['mediaparent'] = '';
+		$queryoptions['mediatype'] = 'module/product';
+		$queryoptions['refersitemap'] = '%';
+		$queryoptions['groupkeys'] = $status;
 		$data = $this->model_core_media->getPaginationList($queryoptions, $step=0, $to=0);
 		
 		return $data;
