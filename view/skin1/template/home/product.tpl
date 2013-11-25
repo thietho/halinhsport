@@ -52,6 +52,7 @@
 </style>
 <div class="list_carousel responsive">
 	<div id="sanpham_noibat">
+    	
     	<?php foreach($medias as $media) {?>
         <li class="sanpham_noibat_li">
         	
@@ -97,6 +98,7 @@
 
 			
 		</li>
+        
         <?php } ?>
 		
 		
