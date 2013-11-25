@@ -17,7 +17,7 @@ class ControllerPageHome extends Controller
 			$this->data['mainmenu'] = $this->loadModule('common/header','showMenu',$arr);
 			//Banner home
 			$template = array(
-						  'template' => "home/banner.tpl",
+						  'template' => "home/bannerhome.tpl",
 						  'width' => 894,
 						  'height' =>894
 						  );

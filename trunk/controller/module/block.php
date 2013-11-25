@@ -45,13 +45,14 @@ class ControllerModuleBlock extends Controller
 					$imagethumbnail = HelperImage::resizePNG($media['imagepath'], $template['width'], $template['height']);
 				}
 	
-				
+				$weblink = $this->model_core_media->getInformation($media['mediaid'], "Link");
 				$this->data['medias'][] = array(
 					'mediaid' => $media['mediaid'],
 					'title' => $media['title'],
 					'summary' => $media['summary'],
 					'imagethumbnail' => $imagethumbnail,
 					'statusdate' => $this->date->formatMySQLDate($media['statusdate'], 'longdate', "/"),
+					'weblink' => $weblink,
 					'link' => $link
 				);
 				
