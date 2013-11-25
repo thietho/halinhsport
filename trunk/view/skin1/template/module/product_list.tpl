@@ -24,7 +24,7 @@ $('#order').val('<?php echo $_GET["order"]?>');
         
     </div>
     	<?php } ?>
-        <?php if($paging){ ?>
+    <?php if($paging){ ?>
     <?php echo $pager?>
     <div class="clearer">&nbsp;</div>
     <?php } ?>
@@ -44,8 +44,10 @@ $('#order').val('<?php echo $_GET["order"]?>');
     
 
 
-<div class="clearer">&nbsp;</div>
-<?php echo $pager?>
+	<div class="clearer">&nbsp;</div>
+    <?php if($paging){ ?>
+	<?php echo $pager?>
+    <?php } ?>
 <?php
 }
 ?>

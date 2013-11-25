@@ -5,7 +5,7 @@ class ControllerSitebarSupportonline extends Controller
 	{
 		$this->load->model("core/media");
 		$this->load->model("core/sitemap");
-		$sitemapid = "hotroonline";
+		$sitemapid = "ho-tro-truc-tuyen";
 		$siteid = $this->member->getSiteId();
 		$this->data['sitemap'] = $this->model_core_sitemap->getItem($sitemapid, $siteid);
 		$this->data['media'] = $this->model_core_media->getItem($siteid.$sitemapid);

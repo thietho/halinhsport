@@ -1,4 +1,4 @@
-<div class="ben-section-title">Đăng nhập</div>
+<div class="ben-section-title"><div class="title">Đăng nhập</div></div>
 
 <div class="ben-section-content">
     <form id="frmLoginSiteBar" method="post">

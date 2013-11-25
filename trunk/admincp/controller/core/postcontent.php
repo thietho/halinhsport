@@ -521,12 +521,13 @@ class ControllerCorePostcontent extends Controller
 		
 		foreach($sitemaps as $item)
 		{
-			if($item['moduleid'] == $route)
+			//if($item['moduleid'] == $route)
 			{
 				$childs = $this->model_core_sitemap->getListByParent($item['sitemapid'], $siteid);
-				
-				$link = '<input id="refersitemap-'.$item['sitemapid'].'" name="listrefersitemap['.$item['sitemapid'].']" type="checkbox" value="'.$item['sitemapid'].'" />'.$item['sitemapname'];
-				
+				if($item['moduleid'] == $route)
+					$link = '<input id="refersitemap-'.$item['sitemapid'].'" name="listrefersitemap['.$item['sitemapid'].']" type="checkbox" value="'.$item['sitemapid'].'" />'.$item['sitemapname'];
+				else
+					$link = $item['sitemapname'];
 				$str .= "<li>";
 				
 				$str .= $link;

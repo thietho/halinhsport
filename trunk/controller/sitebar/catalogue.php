@@ -27,7 +27,7 @@ class ControllerSitebarCatalogue extends Controller
 		{
 			$childs = $this->model_core_sitemap->getListByParent($item['sitemapid'], $siteid, $status);
 			
-			$link = "<a class='left' title='".strip_tags($item['sitemapname'])."'>".$item['sitemapname']."</a>";
+			$link = "<a class='left'>".$item['sitemapname']."</a>";
 			
 			if(substr($item['moduleid'],0,6) == "group/")
 			{
@@ -38,7 +38,7 @@ class ControllerSitebarCatalogue extends Controller
 			if($item['moduleid'] != "group" && $item['moduleid'] != "homepage")
 			{
 				//$link='<a class="left" href="?route='.$item['moduleid']."&sitemapid=".$item['sitemapid'].'" title="[Detail]">'.$item['sitemapname'].'</a>';
-				$link = "<a  href='".$this->document->createLink($item['sitemapid'])."' title='".strip_tags($item['sitemapname'])."'>".html_entity_decode($item['sitemapname'])."</a>";
+				$link = "<a  href='".$this->document->createLink($item['sitemapid'])."'>".$item['sitemapname']."</a>";
 			}
 			
 			$str .= "<li>";
@@ -47,12 +47,11 @@ class ControllerSitebarCatalogue extends Controller
 			
 			if(count($childs) > 0)
 			{
-				$deep = $this->model_core_sitemap->getDeep($item['sitemapid'], $siteid);
-				//$str .= "<span class='collape right'>[+]</span>";
+				$str .= "<span class='collape down ben-right'></span>";
 				$str .= '<div class="clearer">&nbsp;</div>';
 				$str .= "</div>";
 				
-				$str .= "<ul id='".$item['sitemapid']."' class='deep".$deep."'>";
+				$str .= "<ul id='".$item['sitemapid']."'>";
 				$str .= $this->getMenu($item['sitemapid'],$status);
 				$str .= "</ul>";
 			}

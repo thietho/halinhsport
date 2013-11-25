@@ -20,15 +20,16 @@ class ModelCoreMedia extends ModelCoreFile
 	
 	public function getList($where="", $from=0, $to=0,$order="")
 	{
+		if($order == "")
+			$order = " Order by position, statusdate DESC";
 		
 		$sql = "Select `media`.* 
 									from `media` 
 									where status like 'active' " . $where .$order ;
-		if($order == "")
-			$order = " Order by position, statusdate DESC";
+		
 		if($to > 0)
 		{
-			$sql .= $order." Limit ".$from.",".$to;
+			$sql .= " Limit ".$from.",".$to;
 		}
 		
 		$query = $this->db->query($sql);
@@ -138,7 +139,7 @@ class ModelCoreMedia extends ModelCoreFile
 		{
 			$where .= " AND groupkeys like '%[".$groupkeys."]%'";
 		}
-		//echo "<br>".$where;
+		
 		return $this->getList($where, $from,$to,$order);
 	}
 	
