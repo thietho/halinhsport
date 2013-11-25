@@ -122,7 +122,7 @@ class ControllerPageHome extends Controller
 		$queryoptions['mediaparent'] = '';
 		$queryoptions['mediatype'] = $mediatype;
 		$queryoptions['refersitemap'] = '%';
-		$data = $this->model_core_media->getPaginationList($queryoptions, $step=0, $to=0);
+		$data = $this->model_core_media->getPaginationList($queryoptions,$step=0,$to=0);
 		
 		return $data;
 	}
