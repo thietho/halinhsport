@@ -573,11 +573,11 @@ display:block;
 
 /*---------- FOOTER AREA ------------*/
 #ben-footer {
-	border-top: 1px solid #DDD;
+	
 	color: #777;
 	padding: 16px 5px 4px;
 }
-#ben-footer-left {width: 700px;}
+#ben-footer-left {}
 #ben-footer-right {
 	width: 459px;
 	text-align: right;
@@ -746,7 +746,7 @@ ul#menu li ul li div:hover {
 {
 	font-weight:bold;
 	font-size:1.2em;
-	padding:5px 20px 5px 5px;
+	
 }
 
 .ben-section-breadcrumb
@@ -761,4 +761,10 @@ ul#menu li ul li div:hover {
 .tabletop td
 {
 	vertical-align:top;
+}
+.ben-dieukhoan
+{
+	width:500px;
+	height:100px;	
+	overflow:auto;
 }

@@ -150,7 +150,7 @@ $("#ben-next").click(function(){
             	<table>
                 	<?php if($post['code'] != ""){ ?>
                     <tr>
-                    	<td><strong>Mã số:</strong></td>
+                    	<td><strong>Model:</strong></td>
                         <td>
                         	
                             <?php echo $post['code']?>
@@ -174,12 +174,32 @@ $("#ben-next").click(function(){
                             
                         </td>
                     </tr>
+                    <?php if($post['sizes'] != ""){ ?>
+                    <tr>
+                    	<td><strong>Qui cách:</strong></td>
+                        <td>
+                        	
+                            <?php echo $post['sizes']?>
+                            
+                        </td>
+                    </tr>
+                    <?php } ?>
                     <?php if($post['color'] != ""){ ?>
                     <tr>
                     	<td><strong>Màu:</strong></td>
                         <td>
                         	
                             <?php echo $post['color']?>
+                            
+                        </td>
+                    </tr>
+                    <?php } ?>
+                    <?php if($post['material'] != ""){ ?>
+                    <tr>
+                    	<td><strong>Chất liệu:</strong></td>
+                        <td>
+                        	
+                            <?php echo $post['material']?>
                             
                         </td>
                     </tr>
@@ -197,7 +217,8 @@ $("#ben-next").click(function(){
                             <?php } ?>
                                 
                             <span  class="product-price <?php echo $cls?>"><?php echo $this->string->numberFormate($post['price'])?> <?php echo $this->document->setup['Currency']?></span>
-                            <input type="button" class="ben-button" onclick="cart.add('<?php echo $post['mediaid']?>')" value="Đặt hàng">
+                            <input type="button" class="cart-order" onclick="cart.add('<?php echo $post['mediaid']?>')" value="Đặt hàng">
+                            
                         </td>
                     </tr>
                     <?php } ?>
