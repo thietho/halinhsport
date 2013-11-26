@@ -6,7 +6,7 @@
     	
     	<table class="ben-form">
         	<tr>
-            	<td><label>Tên đăng nhập</label></td>
+            	<td width="20%"><label>Tên đăng nhập</label></td>
                 <td><input type="text" id="username" name="username" class="ben-textbox" size="40"></td>
             </tr>
             <tr>
