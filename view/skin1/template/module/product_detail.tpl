@@ -140,8 +140,15 @@ $("#ben-next").click(function(){
     </div>
     <div class="ben-right product-right">
         <h2><?php echo $post['title']?></h2>
-        <?php if($post['noted']!="") echo "<h4>".$post['noted']."</h4>";?>
         
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>        
         
         <div class="fb-like" data-href="<?php echo $post['link']?>" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
         

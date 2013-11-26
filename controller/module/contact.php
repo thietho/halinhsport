@@ -67,7 +67,7 @@ class ControllerModuleContact extends Controller
 			$mail['from'] = $data['email'];
 			$mail['FromName'] = $data['fullname'];
 			$mail['to'] = implode(",",$arrmail);
-			$mail['name'] = "";
+			$mail['name'] = "Admin";
 			$mail['subject'] =  $message['title'];
 			$arr = array($message['description']);
 			$mail['body'] = $this->loadModule('module/contact','createEmailTemplate',$arr);
