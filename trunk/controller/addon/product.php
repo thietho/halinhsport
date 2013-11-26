@@ -18,6 +18,7 @@ class ControllerAddonProduct extends Controller
 		$this->load->model("core/sitemap");
 		$this->load->helper('image');
 		$donvi = 1000;
+		
 		$para = $this->string->referSiteMapToArray($_GET['search']);
 		if(count($para))
 		{
@@ -27,40 +28,23 @@ class ControllerAddonProduct extends Controller
 				$datasearch[$ar[0]] = $ar[1];	
 			}
 			
-			$_GET = $datasearch;
+			//print_r($datasearch);
 			$arr = array();
 			
-			foreach($datasearch as $key => $item)
-			{
-				if($item !="" && $key != "gia" && $key != "keyword" && $key != "loaisp")
-					$arr[] = " AND groupkeys like '%[".$item."]%'";
-					
-				if($key == "loaisp")
-					$arr[] = " AND refersitemap like '%[".$item."]%'";
-				
-			}
 			
 			
 			
-			$where = implode("",$arr);
-			if($datasearch["keyword"]!="")
-			{
-				
-				$where .= " AND ( title like '%".$datasearch["keyword"]."%' OR summary like '%".$datasearch["keyword"]."%' OR description like '%".$datasearch["keyword"]."%')";
-			}
+			
+			
 		}
 		
-		$siteid = $this->member->getSiteId();
-		
-		$arrsitemap = $this->model_core_sitemap->getListByModule('module/product', $siteid);
-		foreach($arrsitemap as $item)
-			$listsitemapid[] = $item['sitemapid'];
-		$arr = array();
-		foreach($listsitemapid as $item)
+		$where = " AND mediatype = 'module/product' ";
+		if($datasearch["keyword"]!="")
 		{
-			$arr[] = " refersitemap like '%[".$item."]%'";
+			
+			$where .= " AND ( title like '%".$datasearch["keyword"]."%' OR summary like '%".$datasearch["keyword"]."%' OR description like '%".$datasearch["keyword"]."%')";
 		}
-		$hasprice = false;
+		
 		if($datasearch['gia'] != "")
 		{
 			$hasprice = true;
@@ -71,37 +55,13 @@ class ControllerAddonProduct extends Controller
 				$whereprice = " AND price >= '".$giatu*$donvi ."'";
 			if($giaden)
 				$whereprice.= " AND price <= '".$giaden*$donvi ."'";
-			$whereprice;
-			$mediaprice = $this->model_core_media->getList($whereprice);
-			
-			$listparent = $this->string->matrixToArray($mediaprice,"mediaparent");
+			$where .= $whereprice;
 		}
 		
-		$where .= "AND (". implode($arr," OR ").")";
 		
 		$medias = $this->model_core_media->getList($where);
 		
-		if(count($listparent))
-		{
-			$data = array();
-			foreach($medias as $key =>$item)
-			{
-				if(!in_array($item['mediaid'],$listparent))
-				{
-					unset($medias[$key]);	
-				}
-				else
-				{
-					$data[] = $item;	
-				}
-			}
-			$medias = $data;
-		}
-		else
-		{
-			if($hasprice)
-				$medias = array();	
-		}
+		
 		
 		$template = array(
 							  'template' => "module/product_list.tpl",

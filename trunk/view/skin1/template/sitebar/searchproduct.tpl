@@ -10,14 +10,7 @@
                 <?php } ?>
             </select>
         </p>
-        <p>
-            <select name="nhomhuong" id="nhomhuong">
-                <option value="">Nhóm hương</option>
-                <?php foreach($nhomhuong as $it){ ?>
-                <option value="<?php echo $it['categoryid']?>"><?php echo $this->string->getPrefix("&nbsp;&nbsp;&nbsp;&nbsp;",$it['level']) ?><?php echo $it['categoryname']?></option>                        
-                <?php } ?>
-            </select>
-        </p>
+        
         <p>
             <select name="nhanhieu" id="nhanhieu">
                 <option value="">Nhãn hiệu</option>
@@ -62,9 +55,9 @@ $("#btnSearch").click(function(){
 	
 	window.location = url+".html";
 });
-$("#loaisp").val("<?php echo $_GET['loaisp']?>");
-$("#nhomhuong").val("<?php echo $_GET['nhomhuong']?>");
-$("#nhanhieu").val("<?php echo $_GET['nhanhieu']?>");
-$("#gia").val("<?php echo $_GET['gia']?>");
-$("#keyword").val("<?php echo $_GET['keyword']?>");
+$("#loaisp").val("<?php echo $para['loaisp']?>");
+
+$("#nhanhieu").val("<?php echo $para['nhanhieu']?>");
+$("#gia").val("<?php echo $para['gia']?>");
+$("#txt_search").val("<?php echo $para['keyword']?>");
 </script>

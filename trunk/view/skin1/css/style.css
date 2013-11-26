@@ -772,3 +772,11 @@ ul#menu li ul li div:hover {
 {
 	margin-right:10px;	
 }
+#ben-searchform select
+{
+	width:188px;	
+}
+#ben-searchform #txt_search
+{
+	width:134px;
+}

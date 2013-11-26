@@ -5,14 +5,25 @@ class ControllerSitebarSearchproduct extends Controller
 	{
 		$this->load->model("core/category");
 		$this->load->model("core/sitemap");
+		$this->data['para'] = array();
+		
+		$para = $this->string->referSiteMapToArray($_GET['search']);
+		
+		if(count($para))
+		{
+			foreach($para as $val)
+			{
+				$ar = split("=",$val);
+				$datasearch[$ar[0]] = $ar[1];	
+			}
+			
+			$this->data['para'] = $datasearch;
+		}
+		
 		$this->data['loaisp'] = array();
 		$siteid = $this->member->getSiteId();
-		$this->model_core_sitemap->getTreeSitemap("sanpham",$this->data['loaisp'],$siteid);
+		$this->model_core_sitemap->getTreeSitemap("san-pham",$this->data['loaisp'],$siteid);
 		unset($this->data['loaisp'][0]);
-		
-		$this->data['nhomhuong'] = array();
-		$this->model_core_category->getTree("nhomhuong",$this->data['nhomhuong']);
-		unset($this->data['nhomhuong'][0]);
 		
 		$this->data['nhanhieu'] = array();
 		$this->model_core_category->getTree("nhanhieu",$this->data['nhanhieu']);
