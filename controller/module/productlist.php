@@ -242,7 +242,7 @@ class ControllerModuleProductlist extends Controller
 					$imagetpreview = HelperImage::resizePNG($media['imagepath'], $template['widthpreview'], $template['heightpreview']);
 				}
 				
-				$priceproduct = $this->model_core_media->getListByParent($media['mediaid']," AND mediatype = 'price' Order by position");
+				
 				
 				
 				$properties = $this->string->referSiteMapToArray($media['groupkeys']);

@@ -179,23 +179,19 @@ class ControllerModulePagedetail extends Controller
 			}
 			
 		}
-		//Get sub infomation
 		
-		$this->data['child'] = $this->model_core_media->getListByParent($mediaid," AND mediatype = 'subinfor' Order by position");
-		foreach($this->data['child'] as $key => $item)
-		{
-			$this->data['child'][$key]['imagepreview'] = "<img width=100 src='".HelperImage::resizePNG($item['imagepath'], $template['width'], $template['height'])."' >";
-		}
 		
-		$this->data['priceproduct'] = $this->model_core_media->getListByParent($mediaid," AND mediatype = 'module/product' Order by position");
 		
-		foreach($this->data['priceproduct'] as $key => $item)
+		
+		$this->data['priceproduct'] = $this->model_core_media->getListByParent($mediaid," AND mediatype = 'module/product' " ," Order by position");
+		
+		/*foreach($this->data['priceproduct'] as $key => $item)
 		{
 			
 			
 			$khuyenmai = $this->model_core_media->getItem($this->data['priceproduct'][$key]['makhuyenmai']);
 			$this->data['priceproduct'][$key]['tenkhuyenmai'] = $khuyenmai['title'];
-		}
+		}*/
 		
 		$queryoptions = array();
 		$queryoptions['mediaparent'] = '%';

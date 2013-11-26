@@ -24,7 +24,7 @@ class ModelCoreMedia extends ModelCoreFile
 		
 		$sql = "Select `media`.* 
 									from `media` 
-									where status like 'active' " . $where .$order ;
+									where status like 'active' " . $where ;
 		if($order == "")
 		{
 			$order = " Order by position, statusdate DESC";
@@ -234,10 +234,10 @@ class ModelCoreMedia extends ModelCoreFile
 		return $query->rows;
 	}
 	
-	public function getListByParent($parent, $w="")
+	public function getListByParent($parent,$w ="" ,$order="")
 	{
-		$where = "AND mediaparent = '".$parent."'" . $w;		
-		return $this->getList($where);		
+		$where = "AND mediaparent = '".$parent."'".$w;		
+		return $this->getList($where,$order);		
 		
 		
 	}

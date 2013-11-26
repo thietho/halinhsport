@@ -106,12 +106,23 @@ $('#title').change(function(e) {
                         <?php } ?>
                         <?php if($hasCode){?>
                        	<p>
-                        	<label>Code</label><br>
+                        	<label>Model</label><br>
                             <input class="text" type="text" id="code" name="code" value="<?php echo $post['code']?>" size="60" />
+                        </p>
+                        <p>
+                        	<label>Qui cách</label><br>
+                            <input class="text" type="text" id="sizes" name="sizes" value="<?php echo $post['sizes']?>" size="60" />
+                         	
                         </p>
                         <p>
                         	<label>Màu sắc</label><br>
                             <input class="text" type="text" id="color" name="color" value="<?php echo $post['color']?>" size="60" />
+                         	
+                        </p>
+                        <p>
+                        	<label>Chất liệu</label><br>
+                            <input class="text" type="text" id="material" name="material" value="<?php echo $post['material']?>" size="60" />
+                         	
                         </p>
                         <p>
                             <label>Nhãn hiệu</label><br />
