@@ -40,8 +40,8 @@ class ControllerPageHome extends Controller
 			//San pham moi
 			$template = array(
 						  'template' => "module/product_list.tpl",
-						  'width' => 150,
-						  'height' =>150,
+						  'width' => 170,
+						  'height' =>170,
 						  'paging' => false,
 						  'sorting' =>false
 						  );
@@ -54,8 +54,8 @@ class ControllerPageHome extends Controller
 			//San pham noi bat
 			$template = array(
 						  'template' => "home/product.tpl",
-						  'width' => 150,
-						  'height' =>150,
+						  'width' => 170,
+						  'height' =>170,
 						  'paging' => false,
 						  'sorting' =>false
 						  );

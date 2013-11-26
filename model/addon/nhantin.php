@@ -1,11 +1,11 @@
 <?php
-class ModelBenNhantin extends Model
+class ModelAddonNhantin extends Model
 { 
 	
 	public function getItem($id, $where="")
 	{
-		$query = $this->db->query("Select `ben_nhantin`.* 
-									from `ben_nhantin` 
+		$query = $this->db->query("Select `nhantin`.* 
+									from `nhantin` 
 									where id ='".$id."' ".$where);
 		return $query->row;
 	}
@@ -13,8 +13,8 @@ class ModelBenNhantin extends Model
 	public function getList($where="")
 	{
 		
-		$sql = "Select `ben_nhantin`.* 
-									from `ben_nhantin` 
+		$sql = "Select `nhantin`.* 
+									from `nhantin` 
 									where 1=1 " . $where . $order;
 		if($to > 0)
 		{
@@ -29,7 +29,7 @@ class ModelBenNhantin extends Model
 	
 	protected function getnextid()
 	{
-		$id=$this->db->getNextId("ben_nhantin","id");
+		$id=$this->db->getNextId("nhantin","id");
 		return $id;
 	}
 	
@@ -55,7 +55,7 @@ class ModelBenNhantin extends Model
 						$ngaydangky
 					);
 		
-		$this->db->insertData("ben_nhantin",$field,$value);
+		$this->db->insertData("nhantin",$field,$value);
 		
 		return $id;
 	}
@@ -76,7 +76,7 @@ class ModelBenNhantin extends Model
 					);
 		
 		$where="id = '".$id."'";
-		$this->db->updateData("ben_nhantin",$field,$value,$where);
+		$this->db->updateData("nhantin",$field,$value,$where);
 		
 		
 		
@@ -87,7 +87,7 @@ class ModelBenNhantin extends Model
 	{
 		
 		$where="id = '".$id."'";
-		$this->db->deleteData("ben_nhantin",$where);
+		$this->db->deleteData("nhantin",$where);
 			
 		
 	}

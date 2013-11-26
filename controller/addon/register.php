@@ -136,5 +136,73 @@ class ControllerAddonRegister extends Controller
 	  		return FALSE;
 		}
 	}
+	
+	public function savenhantin()
+	{
+		$data = $this->request->post;
+		if($this->validateFormNhanTin($data))
+		{
+			$this->load->model("addon/nhantin");
+			
+			$this->model_addon_nhantin->insert($data);
+			
+			//Gui thong bao vo mail
+			$mail['from'] = "info@halinhsport.com";
+			$mail['FromName'] = "Ha Linh Sport";
+			$mail['to'] = $data['email'];
+			$mail['name'] = $data['hoten'];
+			$mail['subject'] =  "Thong bao nhan tin";
+			$mail['body'] = "Ban da dang ky nhan tin tu halinhsport.com thanh cong";
+			$this->mailsmtp->sendMail($mail);
+			
+			$this->data['output'] = "true";
+		}
+		else
+		{
+			foreach($this->error as $item)
+			{
+				$this->data['output'] .= $item."\n";
+			}
+		}
+		$this->id='content';
+		$this->template='common/output.tpl';
+		$this->render();
+	}
+	
+	private function validateFormNhanTin($data)
+	{
+		if(trim($data['hoten']) =="")
+		{
+      		$this->error['hoten'] = "Bạn chưa nhập họ tên";
+    	}
+		
+		if ($data['email'] == "") 
+		{
+      		$this->error['email'] = "Bạn chưa nhập email";
+    	}
+		else
+		{
+			if(!$this->validation->_checkEmail($data['email']))
+			{
+				$this->error['email'] = "Email không đúng dịnh dạng";
+			}
+			else
+			{
+				$this->load->model("addon/nhantin");
+				$where = " AND email = '".$data['email']."'";
+				$nhantin = $this->model_addon_nhantin->getList($where);
+				if(count($nhantin))
+				{
+					$this->error['email'] = "Email đã được đăng ký";
+				}
+			}
+		}
+		
+		if (count($this->error)==0) {
+	  		return TRUE;
+		} else {
+	  		return FALSE;
+		}
+	}
 }
 ?>

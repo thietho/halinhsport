@@ -31,7 +31,7 @@ class ControllerModuleProductlist extends Controller
 		
 		$step = (int)$this->request->get['step'];
 		$to = $count;
-		$_GET = $this->document->getPara();
+		//$_GET = $this->document->getPara();
 		//Get list
 		$child = array();
 		$this->model_core_sitemap->getTreeSitemap($sitemapid,$child,$this->member->getSiteId());
