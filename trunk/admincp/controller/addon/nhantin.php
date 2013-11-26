@@ -24,7 +24,7 @@ class ControllerAddonNhantin extends Controller
 			$this->data['permissionDelete'] = false;
 		}
 		
-		$this->load->model("ben/nhantin");
+		$this->load->model("addon/nhantin");
 		
    	}
 	
@@ -35,7 +35,7 @@ class ControllerAddonNhantin extends Controller
 	
 	private function getList()
 	{
-		$this->data['datas'] = $this->model_ben_nhantin->getList();
+		$this->data['datas'] = $this->model_addon_nhantin->getList();
 		
 		$this->id='content';
 		$this->template="addon/nhantin_list.tpl";
