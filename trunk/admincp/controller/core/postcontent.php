@@ -124,10 +124,11 @@ class ControllerCorePostcontent extends Controller
 			default:
 				$this->data['post'] = $this->model_core_media->getItem($mediaid);
 				$this->data['properties'] = $this->string->referSiteMapToArray($this->data['post']['groupkeys']);
+				//print_r($this->data['properties']);
 				$this->data['post']['mediatype'] = $route;
 				if($mediaid == "")
 				{
-					$this->data['post']['mediaid'] = $this->model_core_media->insert($data);
+					//$this->data['post']['mediaid'] = $this->model_core_media->insert($data);
 					$this->data['post']['mediaparent'] = $this->request->get['mediaparent'];
 					if($this->data['post']['mediaparent'])
 					{
@@ -372,25 +373,9 @@ class ControllerCorePostcontent extends Controller
 			}
 		}
 		
-		//$data['refersitemap'] = $this->model_core_media->getReferSitemapString($sitemapid, $data['refersitemap']);
-		if($data['mediaid'] == "")
-		{
-			$data['mediaid'] = $this->model_core_media->insert($data);
-			if($data['mediaparent'])
-				$this->model_core_media->updateStatus($data['mediaid'],"active");
-		}
-		else
-		{
-			if($this->model_core_media->update($data) == false)
-			{
-				exit("There are some problems, please contact administrator!");
-			}
-			if($data['eventdate']!="")
-			{
-				$this->model_core_media->updateCol($data['mediaid'],'eventdate',$this->date->formatViewDate($data['eventdate']));	
-				$this->model_core_media->updateCol($data['mediaid'],'eventtime',$data['eventtime']);
-			}
-		}
+		
+		$this->model_core_media->save($data);
+		
 		
 		$listAttachment=$this->data['post']['attimageid'];
 		$this->model_core_media->saveAttachment($data['mediaid'],$listAttachment);
@@ -409,95 +394,12 @@ class ControllerCorePostcontent extends Controller
 		$this->data['output'] = "true";
 		$this->template="common/output.tpl";
 		$this->render();
-		//if($route == "module/news")
-		//{
-		
-		//}
-		//else
-		//{
-			//$this->redirect("index.php");
-		//}
-		
-	}
-	
-	public function savepreview()
-	{
-		$this->load->model("core/media");
-		$this->load->model("core/sitemap");
-		$route = $this->getRoute();
-		$this->data['post'] = $this->request->post;
-		//$this->data['post']['temp'] = 'temp';
-		$sitemapid = $this->request->get['sitemapid'];
-		$mediaid = $this->request->get['mediaid'];
-		$siteid = $this->user->getSiteId();
-			
-		$sitemapid = $this->request->get['sitemapid'];
-		
-		$data = $this->data['post'];
-		
-		
-		$data['userid'] = $this->user->getId();
-		
-		if($data['price'] == "")
-			$data['price'] = $this->data['post']['mainprice'];
-		
-		$data['groupkeys'] = $this->getProperties($this->data['post']);
-		
-		$list = $this->model_core_sitemap->getListByModule("module/news",$this->user->getSiteId());
-		
-		$data['refersitemap'] = "";
-		if($this->request->post['listrefersitemap'])
-		{
-			foreach ($this->request->post['listrefersitemap'] as $refersiteid) {
-				$data['refersitemap'] .= "[".$refersiteid."]";
-			}
-		}
-		
-		if($data['mediaid'] == "")
-		{
-			
-			$data['mediaid'] = $this->model_core_media->insertTemp($data);
-			
-			if($data['mediaparent'])
-				$this->model_core_media->updateStatus($data['mediaid'],"active");
-		}
-		else
-		{
-			if($this->model_core_media->update($data) == false)
-			{
-				exit("There are some problems, please contact administrator!");
-			}
-			if($data['eventdate']!="")
-			{
-				$this->model_core_media->updateCol($data['mediaid'],'eventdate',$this->date->formatViewDate($data['eventdate']));	
-				$this->model_core_media->updateCol($data['mediaid'],'eventtime',$data['eventtime']);
-			}
-		}
-		
-		$listAttachment=$this->data['post']['attimageid'];
-		$this->model_core_media->saveAttachment($data['mediaid'],$listAttachment);
-		$listdelfile=$this->data['post']['delfile'];
-		if(count($listdelfile))
-			foreach($listdelfile as $item)
-				$this->model_core_file->deleteFile($item);
-		$this->model_core_media->clearTempFile();
-
-		
-		$this->data['output'] = json_encode($data);
-		
-		$this->template="common/output.tpl";
-		$this->render();
-
-		
 	}
 	
 	private function getProperties($data)
 	{
 		$arr = $data['loaisp'];
-		$arr['nhomhuong'] = $data['nhomhuong'];
-		$arr['nhanhieu'] = $data['nhanhieu'];
-		$arr['color'] = $data['color'];
-		$arr['size'] = $data['size'];
+		
 		$groupkeys = $this->string->arrayToString($arr);
 		return $groupkeys;	
 	}

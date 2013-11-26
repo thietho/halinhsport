@@ -1,4 +1,4 @@
-<div class=" ben-section-title">Nhận xét về <?php echo $post['title']?></div>
+<div class="ben-section-breadcrumb">Nhận xét về <?php echo $post['title']?></div>
 <div class="ben-post ben-comment">
     <?php foreach($comments as $key => $comment){ ?>
     <div class="ben-comment-item">

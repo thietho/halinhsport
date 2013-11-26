@@ -295,11 +295,21 @@ $("#ben-next").click(function(){
     
     <div class="clearer">&nbsp;</div>
 </div>
-<div class=" ben-section-title">Sản phẩm cùng nhãn hiệu</div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-href="<?php echo $post['link']?>" data-numposts="20" data-colorscheme="light"></div>
+
+<div class="ben-section-breadcrumb">Sản phẩm cùng nhãn hiệu</div>
 <?php echo $saphamcungnhanhieu?>
 
-<?php echo $comment?>
-<div class=" ben-section-title">Gửi Nhận xét về <?php echo $post['title']?></div>
+<!--<?php echo $comment?>
+<div class="ben-section-breadcrumb">Gửi Nhận xét về <?php echo $post['title']?></div>
 <div id="comment-warning" class="ben-error ben-hidden"></div>
 <form id="frmComment">
 <input type="hidden" name="mediaid" value="<?php echo $post['mediaid']?>" />
@@ -341,7 +351,7 @@ $("#ben-next").click(function(){
     </table>
     <input type="button" class="ben-button ben-center" value="Gửi nhận xét" onclick="sendComment()"/>
 </div>
-</form>
+</form>-->
 <script language="javascript">
 $(".product-icon").click(function(){
 	var arr = this.id.split("-");
