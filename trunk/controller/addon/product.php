@@ -44,7 +44,10 @@ class ControllerAddonProduct extends Controller
 			
 			$where .= " AND ( title like '%".$datasearch["keyword"]."%' OR summary like '%".$datasearch["keyword"]."%' OR description like '%".$datasearch["keyword"]."%')";
 		}
-		
+		if($datasearch["nhanhieu"]!="")
+		{
+			$where .= " AND brand = '".$datasearch["nhanhieu"]."'";
+		}
 		if($datasearch['gia'] != "")
 		{
 			$hasprice = true;
