@@ -231,6 +231,53 @@ function showFolderMoveForm()
 			$(eid).dialog("open");	
 		});
 }
+function setForward(sitemapid)
+{
+	$('body').append('<div id="formforward" style="display:none"></div>');
+	var eid = "#formforward";
+	$(eid).attr('title','Chuyễn tiếp');
+		$( eid ).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "explode",
+			width: 600,
+			height: 300,
+			modal: true,
+			close:function()
+				{
+					$(eid).remove();
+				},
+			buttons: {
+				
+				
+				
+				'Lưu':function()
+				{
+					$.post("?route=core/sitemap/saveCol",
+					{
+						sitemapid:sitemapid,
+						col:'forward',
+						val:$('#forward').val()
+					},
+					function(data){
+						$(eid).dialog( "close" );
+					});
+					
+				},
+				'Đóng': function() 
+				{
+					
+					$(eid).dialog( "close" );
+					
+				},
+			}
+		});
+	
+		
+		$(eid).load("?route=core/sitemap/forwardForm&sitemapid="+sitemapid+"&dialog=true",function(){
+			$(eid).dialog("open");	
+		});
+}
 function delFolder(folderid)
 {
 	$.get("?route=core/file/delFolder&folderid="+folderid,function(data){
