@@ -106,7 +106,7 @@ $(function() {
         
         <div id="ben-content">
             <?php echo $content?>
-            <iframe scrolling="no" frameborder="0" src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FShopOli&width=1180&height=400&show_faces=true&colorscheme=light&stream=false&border_color=orange&header=true&appId=388790261193017" style="border: none; overflow: hidden; width: 1280px; height: 400px; margin:10px;"></iframe>
+            
         </div>
         
         

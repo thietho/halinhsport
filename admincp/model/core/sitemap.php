@@ -19,7 +19,7 @@ class ModelCoreSitemap extends Model
 							'module/traning'=>'Traning',
 							'module/question'=>'Questions',
 							'module/location'=>'Location',
-							
+							'module/forward'=>'Forward',
 							);
 	private $moduleaddon = array(
 								 /*"core/changeskin" => "Change skin",*/
@@ -290,6 +290,18 @@ class ModelCoreSitemap extends Model
 					);
 		$value=array(
 						$position
+					);
+		$where="sitemapid = '".$sitmapid."' AND siteid = '".$siteid."'";
+		$this->db->updateData('sitemap',$field,$value,$where);
+	}
+	
+	public function updateCol($sitmapid,$col,$val, $siteid)
+	{
+		$field=array(
+						$col
+					);
+		$value=array(
+						$val
 					);
 		$where="sitemapid = '".$sitmapid."' AND siteid = '".$siteid."'";
 		$this->db->updateData('sitemap',$field,$value,$where);

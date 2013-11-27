@@ -366,5 +366,26 @@ class ControllerCoreSitemap extends Controller
 		//print_r($counter[0]['FieldValue']);
 		return $counter[0]['FieldValue'];
 	}
+	
+	public function forwardForm()
+	{
+		$this->load->model("core/sitemap");
+		$sitemapid = $this->request->get['sitemapid'];
+		$this->data['sitemap'] = $this->model_core_sitemap->getItem($sitemapid, $this->user->getSiteId());
+		
+		$this->id='content';
+		$this->template='core/sitemap_forward.tpl';
+		$this->render();
+	}
+	public function saveCol()
+	{
+		$data = $this->request->post;
+		$this->load->model("core/sitemap");	
+		$this->model_core_sitemap->updateCol($data['sitemapid'],$data['col'],$data['val'], $this->user->getSiteId());
+		$this->data['output'] = "true";
+		$this->id="content";
+		$this->template="common/output.tpl";
+		$this->render();
+	}
 }
 ?>

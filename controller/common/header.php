@@ -51,15 +51,21 @@ class ControllerCommonHeader extends Controller
 				$currenttab = "class='current-tab'";
 			
 			$link = "<a ".$currenttab.">".$item['sitemapname']."</a>";
-			
-			if($item['moduleid'] != "group")
+			switch($item['moduleid'])
 			{
-				//$link = "<a ".$currenttab." href='index.php?route=page/detail&sitemapid=".$item['sitemapid']."'>".$item['sitemapname']."</a>";
-				$link = "<a ".$currenttab." href='".$this->document->createLink($item['sitemapid'])."' title='".$item['sitemapname']."'>".html_entity_decode($item['sitemapname'])."</a>";
+				case "group":
+					$link = "<a ".$currenttab." title='".$item['sitemapname']."'>".html_entity_decode($item['sitemapname'])."</a>";
+					break;	
+				case "homepage":
+					$link = "<a ".$currenttab." href='".HTTP_SERVER."'>".html_entity_decode($item['sitemapname'])."</a>";
+					break;
+				case "module/forward":
+				default:
+					$link = "<a ".$currenttab." href='".$item['forward']."' title='".$item['sitemapname']."'>".html_entity_decode($item['sitemapname'])."</a>";
+					break;	
 			}
-			if($item['moduleid'] == "homepage"){
-				$link = "<a ".$currenttab." href='".HTTP_SERVER."'>".html_entity_decode($item['sitemapname'])."</a>";
-			}
+			
+			
 			
 			$str .= "<li>";
 			$str .= $link;
