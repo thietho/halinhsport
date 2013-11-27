@@ -38,8 +38,8 @@ class ModelAddonOrder extends Model
 	
 	public function insert($data)
 	{
-		
-		$orderid= $this->nextID($this->date->now['year'].$this->date->numberFormate($this->date->now['mon']));
+		$date = getdate();
+		$orderid= $this->nextID($date['year'].$this->date->numberFormate($date['mon']));
 		$orderdate=$this->date->getToday();
 		$userid=$this->db->escape(@$data['userid']);
 		$customername=$this->db->escape(@$data['customername']);

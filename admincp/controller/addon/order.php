@@ -31,19 +31,16 @@ class ControllerAddonOrder extends Controller
 		
 		foreach($this->data['detail'] as $key => $item)
 		{
-			$parent = $this->model_core_media->getItem($item['mediaparent']);
-			if(count($parent)==0)
+			$media = $this->model_core_media->getItem($item['mediaid']);
+			
+			$imagepreview = "<img width=100 src='".HelperImage::resizePNG($media['imagepath'], 180, 180)."' >";
+			$this->data['detail'][$key]['imagepreview'] = $imagepreview;
+			foreach($media as $k => $val)
 			{
-				$imagepreview = "<img width=100 src='".HelperImage::resizePNG($item['imagepath'], 180, 180)."' >";
-				$this->data['detail'][$key]['imagepreview'] = $imagepreview;
-				$this->data['detail'][$key]['title'] = $item['title'];
+				$this->data['detail'][$key][$k] = $val;	
 			}
-			else
-			{
-				$imagepreview = "<img width=100 src='".HelperImage::resizePNG($parent['imagepath'], 180, 180)."' >";
-				$this->data['detail'][$key]['imagepreview'] = $imagepreview;
-				$this->data['detail'][$key]['title'] = $parent['title'] ." - ". $item['title'];
-			}
+			
+			
 		}
 		
 		$this->id='content';
@@ -81,7 +78,7 @@ class ControllerAddonOrder extends Controller
 		if($order['order']['notes'])
 			$data['ghichu'] .= " - ". $order['order']['notes'];
 		$phieuid = $this->model_quanlykho_phieunhapxuat->save($data);
-		print_r($data);
+		
 		$data_ct = array();
 		foreach($order['detail'] as $item)
 		{
@@ -143,18 +140,13 @@ class ControllerAddonOrder extends Controller
 			$this->data['order']['text_active'] = "Checked";
 		foreach($this->data['detail'] as $key => $item)
 		{
-			$parent = $this->model_core_media->getItem($item['mediaparent']);
-			if(count($parent)==0)
+			$media = $this->model_core_media->getItem($item['mediaid']);
+			
+			$imagepreview = "<img width=100 src='".HelperImage::resizePNG($media['imagepath'], 180, 180)."' >";
+			$this->data['detail'][$key]['imagepreview'] = $imagepreview;
+			foreach($media as $k => $val)
 			{
-				$imagepreview = "<img width=100 src='".HelperImage::resizePNG($item['imagepath'], 180, 180)."' >";
-				$this->data['detail'][$key]['imagepreview'] = $imagepreview;
-				$this->data['detail'][$key]['title'] = $item['title'];
-			}
-			else
-			{
-				$imagepreview = "<img width=100 src='".HelperImage::resizePNG($parent['imagepath'], 180, 180)."' >";
-				$this->data['detail'][$key]['imagepreview'] = $imagepreview;
-				$this->data['detail'][$key]['title'] = $parent['title'] ." - ". $item['title'];
+				$this->data['detail'][$key][$k] = $val;	
 			}
 		}
 		
@@ -248,18 +240,13 @@ class ControllerAddonOrder extends Controller
 		
 		foreach($this->data['detail'] as $key => $item)
 		{
-			$parent = $this->model_core_media->getItem($item['mediaparent']);
-			if(count($parent)==0)
+			$media = $this->model_core_media->getItem($item['mediaid']);
+			
+			$imagepreview = "<img width=100 src='".HelperImage::resizePNG($media['imagepath'], 180, 180)."' >";
+			$this->data['detail'][$key]['imagepreview'] = $imagepreview;
+			foreach($media as $k => $val)
 			{
-				$imagepreview = "<img width=100 src='".HelperImage::resizePNG($item['imagepath'], 180, 180)."' >";
-				$this->data['detail'][$key]['imagepreview'] = $imagepreview;
-				$this->data['detail'][$key]['title'] = $item['title'];
-			}
-			else
-			{
-				$imagepreview = "<img width=100 src='".HelperImage::resizePNG($parent['imagepath'], 180, 180)."' >";
-				$this->data['detail'][$key]['imagepreview'] = $imagepreview;
-				$this->data['detail'][$key]['title'] = $parent['title'] ." - ". $item['title'];
+				$this->data['detail'][$key][$k] = $val;	
 			}
 		}
 		
@@ -306,9 +293,10 @@ class ControllerAddonOrder extends Controller
 		
 		$arr_id = $data['id'];
 		$arr_mediaid = $data['mediaid'];
-		$arr_madonvi = $data['madonvi'];
-		$arr_quantity = $data['quantity'];
-		$arr_price = $data['price'];
+		$arr_madonvi = $data['dlmadonvi'];
+		$arr_quantity = $data['soluong'];
+		$arr_price = $data['giatien'];
+		$arr_discount = $data['giamgia'];
 		
 		foreach($arr_mediaid as $key => $mediaid)
 		{
@@ -318,7 +306,7 @@ class ControllerAddonOrder extends Controller
 			$orderpro['unit'] = $arr_madonvi[$key];
 			$orderpro['quantity'] = $arr_quantity[$key];
 			$orderpro['price'] = $arr_price[$key];
-			$orderpro['discount'] = 0;
+			$orderpro['discount'] = $arr_discount[$key];
 			
 			$this->model_addon_order->saveOrderProduct($orderpro);
 		}
@@ -412,7 +400,7 @@ class ControllerAddonOrder extends Controller
 		$keyword = urldecode($this->request->get['keyword']);
 		$sitemapid = urldecode($this->request->get['sitemapid']);
 		$arrkey = split(' ', $keyword);
-		$where = "";
+		$where = " AND mediatype = 'module/product'";
 		if($keyword !="")
 		{
 			$arr = array();

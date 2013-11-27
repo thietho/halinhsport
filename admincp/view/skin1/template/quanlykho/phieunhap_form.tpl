@@ -68,7 +68,7 @@
                 	<table>
                     	<thead>
                             <tr>
-                                <th>Code</th>
+                                <th>Model</th>
                                 <th>Sản phẩm</th>
                                 <th>Số lượng</th>
                                 <th>Đơn vị tính</th>
