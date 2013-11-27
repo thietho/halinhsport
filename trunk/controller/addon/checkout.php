@@ -25,9 +25,12 @@ class ControllerAddonCheckout extends Controller
 	private function getMemberInfor()
 	{
 		$this->load->model("core/user");
-		$this->data['member'] = $this->model_core_user->getItem($this->member->getId());
-		if(count($this->data['member']))
+		if($this->member->getId())
+		{
+			$this->data['member'] = $this->model_core_user->getItem($this->member->getId());
+		
 			$this->data['readonly'] = 'readonly="readonly"';
+		}
 	}
 	
 	public function checkout()
@@ -64,7 +67,7 @@ class ControllerAddonCheckout extends Controller
 			$this->mailsmtp->sendMail($mail);
 			//Gui don hang den khach hang
 			$email = $this->model_core_media->getInformation("setting", 'EmailContact');
-			$mail['from'] = "sales@kidscolorblock.com";
+			$mail['from'] = "cosmetics@mylanbeauty.net";
 			$mail['FromName'] = "Bộ phận bán hàng - ".$this->document->setup['Title'];
 			$mail['to'] = $data['email'];
 			$mail['name'] = $data['customername'];

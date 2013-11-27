@@ -46,7 +46,7 @@ class ControllerAddonCheckoutcomplete extends Controller
 			else
 			{
 				$media['imagethumbnail'] = HelperImage::resizePNG($parent['imagepath'], 100, 100);	
-				$media['title'] = $parent['title'] ." - ". $item['title'];
+				$media['title'] = $item['title'];
 			}
 			
 			
