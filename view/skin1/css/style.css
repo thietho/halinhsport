@@ -377,6 +377,7 @@ input.ben-button:active {border-style: inset;}
 #ben-top{
 	margin: 0 auto;
 	width: 1300px;
+	height:120px;
 	padding-bottom: 0px;
 }
 
@@ -491,7 +492,7 @@ display:block;
 
 
 /*---------- BODY AREA ------------*/
-#ben-content {margin: 24px auto; width:1300px}
+#ben-content {margin:0 auto; width:1300px}
 
 #ben-maincontent{}
 .ben-two-columns #ben-maincontent{width: 750px;}

@@ -3,7 +3,7 @@
         	<?php for($i=0;$i<count($medias);){ ?>
             <tr>
             	<?php for($j=0;$j<4;$j++){ ?>
-                <td>
+                <td width="25%">
                 	<?php $media = $medias[$i]?>
                     <?php $i++?>
                     <?php if(count($media)){ ?>

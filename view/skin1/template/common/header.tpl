@@ -12,8 +12,6 @@
                 <li>|</li>
                 <li><a href="<?php echo $this->document->createLink('sitemap')?>">Site map</a></li>
                 <li>|</li>
-                <li><a href="<?php echo $this->document->createLink('comment')?>">Khách hàng phản hồi</a></li>
-                <li>|</li>
                 <li><a href="<?php echo $this->document->createLink('lien-he')?>">Liên hệ</a></li>
                 
             </ul>
