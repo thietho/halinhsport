@@ -36,7 +36,13 @@
                     <td><a>0937 799 389 - 0905 042 611</a></td>
                 </tr>
             </table>
-            <center>Email: khiemhuongnt@yahoo.com.vn</center>
+        </div>
+        <div style="position:absolute;margin-left:710px; margin-top:98px;">
+        	<table>
+            	<td>Email: khiemhuongnt@yahoo.com.vn</td>
+                <td><a target="_blank" href="https://www.facebook.com/profile.php?id=100000198136520" title="Facebook"><img src="<?php echo HTTP_SERVER.DIR_IMAGE?>facebook.gif" alt="Facebook" title="Facebook"/></a></td>
+            </table>
+        
         </div>
         <div class="clearer">&nbsp;</div>
         
