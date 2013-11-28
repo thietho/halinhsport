@@ -6,7 +6,7 @@ final class Session {
 		@ini_set('session.use_cookies', '1');
 		@ini_set('session.use_trans_sid', 'false');
 	
-		@session_set_cookie_params(24*60*60, '/');
+		//@session_set_cookie_params(24*60*60, '/');
 		@session_start();
 
 		$this->data = $_SESSION;
