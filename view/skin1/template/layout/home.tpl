@@ -66,7 +66,7 @@ var HTTP_SERVER = '<?php echo HTTP_SERVER?>';
 
 <script type="text/javascript" language="javascript" src="<?php echo HTTP_SERVER.DIR_JS?>jquery.carouFredSel-6.2.1.js"></script>
 
-<script type="text/javascript" language="javascript" src="<?php echo HTTP_SERVER.DIR_JS?>snowstorm.js"></script>
+<!--<script type="text/javascript" language="javascript" src="<?php echo HTTP_SERVER.DIR_JS?>snowstorm.js"></script>-->
 <link rel='stylesheet' type='text/css' href='<?php echo HTTP_SERVER.DIR_VIEW?>css/stickytooltip.css'>
 
 <script type="text/javascript">
