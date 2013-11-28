@@ -514,7 +514,8 @@ class ModelCoreMedia extends ModelCoreFile
 		{
 			foreach($media as $col => $val)
 			{
-				$media[$col] = $data[$col];
+				if(isset($data[$col]))
+					$media[$col] = $data[$col];
 			}
 			$data = $media;
 		}

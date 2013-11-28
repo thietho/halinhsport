@@ -19,7 +19,7 @@
         	<input class="button" type="button" value="<?php echo $button_save?>" onclick="save()"/>
             <a class="button" href="<?php echo $DIR_CANCEL.'&page='.$_GET['page']?>"><?php echo $button_cancel?></a>
              <?php } ?>
-             <input type="hidden" id="mediaid" name="mediaid" value="<?php echo $post['mediaid']?>" />
+             <input type="hidden" id="id" name="id" value="<?php echo $post['id']?>" />
              <input type="hidden" id="mediaparent" name="mediaparent" value="<?php echo $post['mediaparent']?>" />
              <input type="hidden" id="mediatype" name="mediatype" value="<?php echo $post['mediatype']?>" />
              <input type="hidden" id="refersitemap" name="refersitemap" value="<?php echo $post['refersitemap']?>" />
@@ -73,7 +73,21 @@
                 <div style="<?php echo $displaynews?>">
         			
                     <div class="col2 left">
-                    	
+                    	<?php if($hasId) {?>
+                        
+                       
+                        <p>
+                            <label>ID</label><br>
+                            <?php if($post['id'] == ""){ ?>
+                            <input class="text" type="text" id="mediaid" name="mediaid" value="<?php echo $post['mediaid']?>" size="60" />
+                            <?php }else{ ?>
+                            <?php echo $post['mediaid']?>
+                            <input type="hidden" id="mediaid" name="mediaid" value="<?php echo $post['mediaid']?>" />
+                            <?php } ?>
+                        </p>
+                        <?php }else{ ?>
+                    	<input type="hidden" id="mediaid" name="mediaid" value="<?php echo $post['mediaid']?>" />
+                        <?php } ?>
                         <?php if($hasTitle) {?>
                         
                        

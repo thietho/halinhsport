@@ -1,6 +1,7 @@
 <?php
 class ControllerCorePostcontent extends Controller
 {
+	private $error = array();
 	function __construct() 
 	{
 	 	$this->load->model("core/user");
@@ -153,6 +154,7 @@ class ControllerCorePostcontent extends Controller
 		//$this->data['heading_title'] = "Post News Page";
 		$this->data['DIR_UPLOADPHOTO'] = HTTP_SERVER."index.php?route=common/uploadpreview";
 		$this->data['DIR_UPLOADATTACHMENT'] = HTTP_SERVER."index.php?route=common/uploadattachment";
+		$this->data['hasId'] = false;
 		$this->data['hasTitle'] = true;
 		$this->data['hasSummary'] = true;
 		$this->data['hasSource'] = true;
@@ -190,6 +192,7 @@ class ControllerCorePostcontent extends Controller
 		
 		if($route == "module/product")
 		{
+			$this->data['hasId'] = true;
 			$this->data['hasCode'] = true;
 			$this->data['hasProperties'] = true;
 			$this->data['hasPrice'] = true;
@@ -316,82 +319,112 @@ class ControllerCorePostcontent extends Controller
 		}
 	}
 	
-	private function validate()
+	private function validate($data)
 	{
-		return true;
+		if($data['mediaid']!="")
+		{
+			if($this->validation->_isId(trim($data['mediaid'])) == false)
+			{
+				$this->error['mediaid'] ="ID không hợp lệ";	
+			}
+			if($data['id']=="")
+			{
+				$media = $this->model_core_media->getItem($data['mediaid']);
+				if(count($media))
+					$this->error['mediaid'] ="ID đã được sử dụng";	
+			}
+		}
+		
+		
+		if (count($this->error)==0) {
+	  		return TRUE;
+		} else {
+	  		return FALSE;
+		}
 	}
 	
 	public function savepost()
 	{
+		
 		$this->load->model("core/media");
 		$this->load->model("core/sitemap");
 		$route = $this->getRoute();
 		$this->data['post'] = $this->request->post;
-		
-		$sitemapid = $this->request->get['sitemapid'];
-		$mediaid = $this->request->get['mediaid'];
-		$siteid = $this->user->getSiteId();
+		if($this->validate($this->data['post']))
+		{
+			$sitemapid = $this->request->get['sitemapid'];
+			$mediaid = $this->request->get['mediaid'];
+			$siteid = $this->user->getSiteId();
+				
+			$sitemapid = $this->request->get['sitemapid'];
 			
-		$sitemapid = $this->request->get['sitemapid'];
-		
-		$data = $this->data['post'];
-		
-		
-		$data['userid'] = $this->user->getId();
-		//$data['saleprice'] = "";
-		if(count($data['saleprice']))
-		{
-			foreach($data['saleprice'] as $key => $val)
+			$data = $this->data['post'];
+			
+			
+			$data['userid'] = $this->user->getId();
+			//$data['saleprice'] = "";
+			if(count($data['saleprice']))
 			{
-				$data['saleprice'][$key] = $this->string->toNumber($val);
+				foreach($data['saleprice'] as $key => $val)
+				{
+					$data['saleprice'][$key] = $this->string->toNumber($val);
+				}
+				$data['saleprice'] = json_encode($data['saleprice']);
 			}
-			$data['saleprice'] = json_encode($data['saleprice']);
+			
+			
+			if($data['price'] == "")
+				$data['price'] = $this->data['post']['mainprice'];
+			
+			$data['groupkeys'] = $this->getProperties($this->data['post']);
+			
+			
+			//$data['refersitemap'] = $this->model_core_media->getReferSitemapString($sitemapid,$data['refersitemap']);
+			
+			$list = $this->model_core_sitemap->getListByModule("module/news",$this->user->getSiteId());
+			
+			
+			/*foreach($list as $item)
+			{
+				$data['refersitemap'] =  $this->model_core_media->getReferSitemapString($item['sitemapid'], $data['refersitemap'], "delete");
+			}*/
+			
+			$data['refersitemap'] = "";
+			if($this->request->post['listrefersitemap'])
+			{
+				foreach ($this->request->post['listrefersitemap'] as $refersiteid) {
+					$data['refersitemap'] .= "[".$refersiteid."]";
+				}
+			}
+			
+			
+			$this->model_core_media->save($data);
+			
+			
+			$listAttachment=$this->data['post']['attimageid'];
+			$this->model_core_media->saveAttachment($data['mediaid'],$listAttachment);
+			/*$listdelfile=$this->data['post']['delfile'];
+			if(count($listdelfile))
+				foreach($listdelfile as $item)
+					$this->model_core_file->deleteFile($item);
+			$this->model_core_media->clearTempFile();*/
+			/*if($route=="module/contact")
+			{
+				$this->model_core_media->saveInformation($data['mediaid'], "email1", $this->data['post']['email1']);
+				$this->model_core_media->saveInformation($data['mediaid'], "email2", $this->data['post']['email2']);
+				$this->model_core_media->saveInformation($data['mediaid'], "email3", $this->data['post']['email3']);
+			}*/
+			$this->data['output'] = "true";
+		}
+		else
+		{
+			foreach($this->error as $item)
+			{
+				$this->data['output'] .= $item."<br>";
+			}
 		}
 		
 		
-		if($data['price'] == "")
-			$data['price'] = $this->data['post']['mainprice'];
-		
-		$data['groupkeys'] = $this->getProperties($this->data['post']);
-		
-		
-		//$data['refersitemap'] = $this->model_core_media->getReferSitemapString($sitemapid,$data['refersitemap']);
-		
-		$list = $this->model_core_sitemap->getListByModule("module/news",$this->user->getSiteId());
-		
-		
-		/*foreach($list as $item)
-		{
-			$data['refersitemap'] =  $this->model_core_media->getReferSitemapString($item['sitemapid'], $data['refersitemap'], "delete");
-		}*/
-		
-		$data['refersitemap'] = "";
-		if($this->request->post['listrefersitemap'])
-		{
-			foreach ($this->request->post['listrefersitemap'] as $refersiteid) {
-				$data['refersitemap'] .= "[".$refersiteid."]";
-			}
-		}
-		
-		
-		$this->model_core_media->save($data);
-		
-		
-		$listAttachment=$this->data['post']['attimageid'];
-		$this->model_core_media->saveAttachment($data['mediaid'],$listAttachment);
-		/*$listdelfile=$this->data['post']['delfile'];
-		if(count($listdelfile))
-			foreach($listdelfile as $item)
-				$this->model_core_file->deleteFile($item);
-		$this->model_core_media->clearTempFile();*/
-		/*if($route=="module/contact")
-		{
-			$this->model_core_media->saveInformation($data['mediaid'], "email1", $this->data['post']['email1']);
-			$this->model_core_media->saveInformation($data['mediaid'], "email2", $this->data['post']['email2']);
-			$this->model_core_media->saveInformation($data['mediaid'], "email3", $this->data['post']['email3']);
-		}*/
-		
-		$this->data['output'] = "true";
 		$this->template="common/output.tpl";
 		$this->render();
 	}

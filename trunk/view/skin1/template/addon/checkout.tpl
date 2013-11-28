@@ -96,7 +96,7 @@
             <tr>
             	<td ></td>
                 <td>
-                	<input type="button" id="btnCheckout" name="btnCheckout" class="ben-button" value="Thanh toán">
+                	<input type="button" id="btnCheckout" name="btnCheckout" class="ben-button" value="Đặt hàng">
                 </td>
             </tr>
         </table>
