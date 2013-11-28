@@ -3,11 +3,11 @@
         <div class="ben-left" id="ben-logo">
             <a href="<?php echo HTTP_SERVER?>"><img src="<?php echo HTTP_SERVER.DIR_IMAGE?>logo.png" height="110px" alt="Logo" title="logo"/></a>
         </div>
-    	<div id="halinhsport" style="position:absolute;margin-left:154px;margin-top:21px;">
-        	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>halinhsport.png" width="225px" alt="Hà Linh Sport" title="Hà Linh Sport"/>
+    	<div id="halinhsport" style="position:absolute;margin-left:170px;margin-top:32px;">
+        	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>halinhsport.png" alt="Hà Linh Sport" title="Hà Linh Sport"/>
         </div>
-        <div id="khiemhuongnt" style="position:absolute;margin-left:955px;margin-top:26px;">
-        	<img height="33px" src="<?php echo HTTP_SERVER.DIR_IMAGE?>khiemhuongnt.png" alt="Khiêm Hương NT" title="Khiêm Hường NT"/>
+        <div id="khiemhuongnt" style="position:absolute;margin-left:955px;margin-top:32px;">
+        	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>khiemhuongnt.png" alt="Khiêm Hương NT" title="Khiêm Hường NT"/>
         </div>
         <div id="ben-top-menu">
         	<ul>
@@ -41,6 +41,7 @@
         	<table>
             	<td>Email: khiemhuongnt@yahoo.com.vn</td>
                 <td><a target="_blank" href="https://www.facebook.com/profile.php?id=100000198136520" title="Facebook"><img src="<?php echo HTTP_SERVER.DIR_IMAGE?>facebook.gif" alt="Facebook" title="Facebook"/></a></td>
+                <td><a target="_blank" href="https://www.facebook.com/profile.php?id=100000198136520" title="Facebook">Khiêm X-Men's</a></td>
             </table>
         
         </div>
