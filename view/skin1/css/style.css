@@ -384,7 +384,7 @@ input.ben-button:active {border-style: inset;}
 
 /* Logo */
 #ben-logo {	
-	margin-right: 40px;
+	margin:5px 10px;
 }
 #ben-logo img {}
 
@@ -412,7 +412,7 @@ z-index:100;
 }
 #ben-main-nav a{
 display:block;
-padding:0px 68px;
+padding:0px 66px;
 
 color:#fff;
 text-decoration:none;

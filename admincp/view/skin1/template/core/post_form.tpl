@@ -210,10 +210,10 @@ $('#title').change(function(e) {
                         </p>
                         <?php } ?>
                     	<?php if($hasPrice) {?>
-                        <p id="frmgiaban">
+                        <!--<p id="frmgiaban">
                         	<label>Giá bán</label>
                             <div id="giaban"></div>
-                        </p>
+                        </p>-->
                         
                         <p>
                             <label><?php echo $text_price?></label><br>
