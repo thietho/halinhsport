@@ -1,9 +1,14 @@
 <div id="ben-header">
     <div id="ben-top">
         <div class="ben-left" id="ben-logo">
-            <img src="<?php echo HTTP_SERVER.DIR_IMAGE?>logo.png" height="110px" alt="Logo" title="logo"/>
+            <a href="<?php echo HTTP_SERVER?>"><img src="<?php echo HTTP_SERVER.DIR_IMAGE?>logo.png" height="110px" alt="Logo" title="logo"/></a>
         </div>
-    
+    	<div id="halinhsport" style="position:absolute;margin-left:154px;margin-top:21px;">
+        	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>halinhsport.png" width="225px" alt="Hà Linh Sport" title="Hà Linh Sport"/>
+        </div>
+        <div id="khiemhuongnt" style="position:absolute;margin-left:955px;margin-top:26px;">
+        	<img height="33px" src="<?php echo HTTP_SERVER.DIR_IMAGE?>khiemhuongnt.png" alt="Khiêm Hương NT" title="Khiêm Hường NT"/>
+        </div>
         <div id="ben-top-menu">
         	<ul>
             	<li><a href="<?php echo HTTP_SERVER?>">Trang chủ</a></li>
@@ -31,6 +36,7 @@
                     <td><a>0937 799 389 - 0905 042 611</a></td>
                 </tr>
             </table>
+            <center>Email: khiemhuongnt@yahoo.com.vn</center>
         </div>
         <div class="clearer">&nbsp;</div>
         

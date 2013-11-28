@@ -11,7 +11,7 @@ final class Validation
 	function _isId( $string )
 	{
 		$Message = true ;
-		(ereg("^[a-zA-Z0-9]+$", $string)) ? $Message = true : $Message = false ;
+		(ereg("^[a-zA-Z0-9_-]+$", $string)) ? $Message = true : $Message = false ;
 		return $Message ;
 	}
 	
