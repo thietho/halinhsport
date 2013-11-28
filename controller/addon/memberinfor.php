@@ -18,7 +18,7 @@ class ControllerAddonMemberinfor extends Controller
 		$this->load->helper('image');
 		$this->data['member'] = $this->model_core_user->getItem($this->member->getId());
 		$this->data['member']['imagethumbnail']=HelperImage::resizePNG($this->data['member']['imagepath'], 200, 200);
-		$this->data['member']['birthdaykids']=$this->model_core_user->getInformation($this->member->getId(),'birthdaykids');
+		//$this->data['member']['birthdaykids']=$this->model_core_user->getInformation($this->member->getId(),'birthdaykids');
 	}
 	
 	public function saveAvatar()

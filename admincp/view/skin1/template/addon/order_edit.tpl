@@ -165,43 +165,7 @@
                                 <td class="number" id="tongcong"><?php echo $this->string->numberFormate($item['tongtien'])?></td>
                                 <td></td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td class="number">Thanh toán</td>
-                                <td class="number"><input type="text" class="text number"  id="thanhtoan" name="thanhtoan" value="<?php echo $this->string->numberFormate($item['thanhtoan'])?>"/></td>
-                                <td><input type="button" class="button" id="btnTrahet" value="Trả hết"/></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td class="number">
-                                	Công nợ
-                                	<input type="hidden" id="congno" name="congno" value="<?php echo $item['congno']?>"/>
-                                </td>
-                                <td class="number" id="lbl-congno"><?php echo $this->string->numberFormate($item['congno'])?></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-
-                                <td></td>
-                                <td class="number">Số ngày công nợ</td>
-                                <td class="number"><input type="text" class="text number"  id="songaycongno" name="songaycongno" value="<?php echo $this->string->numberFormate($item['songaycongno'])?>"/></td>
-                                <td>Ngày</td>
-                            </tr>
+                            
                         </tfoot>
                     </table>
                     <input type="hidden" id="delnhapkho" name="delnhapkho" />

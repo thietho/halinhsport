@@ -4,6 +4,8 @@ class ControllerAddonRegister extends Controller
 	private $error = array();
 	public function index()
 	{
+		if($this->member->getId())
+			$this->response->redirect($this->document->createLink('memberinfor'));
 		$this->document->breadcrumb .= "Đăng ký thành viên";
 		$arr = array("dieu-khoan-dang-ky");
 		$this->data['dieukhoan'] = $this->loadModule('module/information','index',$arr);
@@ -76,6 +78,9 @@ class ControllerAddonRegister extends Controller
     	}
 		else
 		{
+			if($this->validation->_isId(trim($data['username'])) == false)
+				$this->error['username'] ="Username không được có ký tự đặt biệt";
+				
 			$item = $this->model_core_user->getItem($data['username']);
 			if(count($item)>0)
 				$this->error['username'] = "Tên đăng nhập đã đươc sử dụng";

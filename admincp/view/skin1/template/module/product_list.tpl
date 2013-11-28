@@ -3,8 +3,8 @@
             
             	<thead>
                 	<th width="10%"><?php echo $column_position?></th>
-                    
-                    <th>Code</th>
+                    <th>ID</th>
+                    <th>Model</th>
                     <th>Tên sản phẩm</th>
                     <th>Giá bán</th>
                     <th>Giá</th>
@@ -27,7 +27,7 @@
                         	<input type="checkbox" value="<?php echo $media['mediaid']?>" name="delete[<?php echo $media['mediaid']?>]" class="inputchk">
                             <input type="text" class="text number" name="position[<?php echo $media['mediaid']?>]" value="<?php echo $key+1?>" size="3"/>
                         </td>
-                        
+                        <td><b><?php echo $media['mediaid']?></b></td>
                         <td><b><?php echo $media['code']?></b></td>
                     	<td>
                         	<b><?php echo $media['title']?></b><br />
