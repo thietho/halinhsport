@@ -3,9 +3,13 @@
         <div class="ben-left" id="ben-logo">
             <a href="<?php echo HTTP_SERVER?>"><img src="<?php echo HTTP_SERVER.DIR_IMAGE?>logo.png" height="110px" alt="Logo" title="logo"/></a>
         </div>
-    	<div id="halinhsport" style="position:absolute;margin-left:170px;margin-top:32px;">
+    	<div id="halinhsport" style="position:absolute;margin-left:181px;margin-top:15px;">
         	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>halinhsport.png" alt="Hà Linh Sport" title="Hà Linh Sport"/>
         </div>
+        <div id="cungcap" style="position:absolute;margin-left:148px;margin-top:75px;">
+        	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>cungcap.png" alt="Chuyên cung cấp sỉ & lẻ tất cả dung cụ thể dụng thể thao
+In số tên logo giao hàng trong vòng 24h" title="Chuyên cung cấp sỉ & lẻ tất cả dung cụ thể dụng thể thao
+In số tên logo giao hàng trong vòng 24h"/></div>
         <div id="khiemhuongnt" style="position:absolute;margin-left:955px;margin-top:32px;">
         	<img src="<?php echo HTTP_SERVER.DIR_IMAGE?>khiemhuongnt.png" alt="Khiêm Hương NT" title="Khiêm Hường NT"/>
         </div>
