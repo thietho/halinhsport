@@ -59,6 +59,14 @@
                     <input type="hidden" id="brochure_filepath" name="brochure" value="<?php echo $item['brochure']?>"/>
                     <input type="button" class="button" value="<?php echo $entry_photo ?>" onclick="browserFile('brochure','any')"/>
                 </p>
+                <p>
+                    <label>Background</label><br />
+                    <div id="background">
+                        <?php echo $item['background']?>
+                    </div>
+                    <input type="hidden" id="background_filepath" name="background" value="<?php echo $item['background']?>"/>
+                    <input type="button" class="button" value="<?php echo $entry_photo ?>" onclick="browserFile('background','any')"/>
+                </p>
             </div>
         </form>
     
