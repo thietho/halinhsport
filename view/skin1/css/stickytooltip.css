@@ -5,7 +5,7 @@
 display:none;
 position:absolute;
 display:none;
-border:2px solid black; /*Border around tooltip*/
+border:2px solid #FF0000; /*Border around tooltip*/
 background:white;
 border-radius:5px;
 z-index:3000;

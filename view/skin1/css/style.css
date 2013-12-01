@@ -781,3 +781,23 @@ ul#menu li ul li div:hover {
 {
 	width:134px;
 }
+#sticky1
+{
+	width:450px;	
+}
+.tooltip-title
+{
+	background:#F00;
+	font-weight:bold;	
+	padding:5px;
+	font-size:1.2em;
+	color:#FFF;
+}
+.tooltip-title span
+{
+	color:#FF0;	
+}
+.tooltip-summary
+{
+	padding:5px;
+}	

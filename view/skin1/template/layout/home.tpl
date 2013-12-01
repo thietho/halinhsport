@@ -133,19 +133,21 @@ $(function() {
 
 </html>
 <div id="mystickytooltip" class="stickytooltip">
-	<div style="padding:5px">
-        <div id="sticky1">
-        	
-        </div>
+	
+    <div id="sticky1">
+        
     </div>
+    
 </div>
 <script language="javascript">
 
 $(document).ready(function(){
 	$(".link_hover").hover(function(){
-		var img = '<img src="'+$(this).attr('ref')+'">';
-		var text = '<h5>'+$(this).attr('title')+'</h5>';
-		$('#sticky1').html(img+text);
+		//var img = '<img src="'+$(this).attr('ref')+'">';
+		var price = $(this).attr('price');
+		var text = '<div class="tooltip-title">'+$(this).attr('title')+' - <span>'+price+'</span></div>';
+		var summary = '<div class="tooltip-summary">'+$(this).attr('summary')+'</div>';
+		$('#sticky1').html(text+summary);
 		
 	});
 
