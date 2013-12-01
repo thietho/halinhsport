@@ -363,6 +363,7 @@ input.ben-button:active {border-style: inset;}
 #ben-main {
 	margin: 0 auto;
 	width: 1300px;
+	background:#FFF;
 }
 
 
@@ -577,6 +578,7 @@ display:block;
 	
 	color: #777;
 	padding: 16px 5px 4px;
+	background:#FFF;
 }
 #ben-footer-left {}
 #ben-footer-right {
@@ -800,4 +802,4 @@ ul#menu li ul li div:hover {
 .tooltip-summary
 {
 	padding:5px;
-}	
+}

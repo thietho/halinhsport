@@ -53,7 +53,7 @@
 	<div id="sanpham_noibat">
     	
     	<?php foreach($medias as $media) {?>
-        <li class="sanpham_noibat_li">
+        <li class="sanpham_noibat_li link_hover" data-tooltip="sticky1" ref="<?php echo $media['imagetpreview']?>" title="<?php echo $media['title']?>" price="<?php echo $media['pricepromotion']==0?$this->string->numberFormate($media['price']):$this->string->numberFormate($media['pricepromotion']) ?> <?php echo $this->document->setup['Currency']?>" summary="<?php echo strip_tags($media['summary'])?>">
         	
         	<table>
                 <tr class="product-list-image">
