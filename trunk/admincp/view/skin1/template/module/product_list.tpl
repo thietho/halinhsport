@@ -86,7 +86,7 @@
                                         <input type="checkbox" value="<?php echo $child['mediaid']?>" name="delete[<?php echo $child['mediaid']?>]" class="inputchk">
                                         <input type="text" class="text number" name="position[<?php echo $child['mediaid']?>]" value="<?php echo $k +1?>" size="3"/>
                                     </td>
-                                    
+                                    <td><b><?php echo $child['mediaid']?></b></td>
                                     <td><b><?php echo $child['code']?></b>&nbsp;</td>
                                 	<td><b><?php echo $child['title']?></b></td>
                                     <td class="number">

@@ -8,16 +8,16 @@ class ControllerCommonUploadattachment extends Controller
 		//$this->data['output'] = json_encode(array('files' => $_FILES));
 		
 		$datas = array();
-		//print_r($_FILES['image2']['name']);
-		foreach($_FILES['image2']['name'] as $key => $item)
+		//print_r($_FILES['files']['name']);
+		foreach($_FILES['files']['name'] as $key => $item)
 		{
-			if($_FILES['image2']['name'][$key] != "")
+			if($_FILES['files']['name'][$key] != "")
 			{
-				$ftemp['name'] = $_FILES['image2']['name'][$key];
-				$ftemp['type'] = $_FILES['image2']['type'][$key];
-				$ftemp['tmp_name'] = $_FILES['image2']['tmp_name'][$key];
-				$ftemp['error'] = $_FILES['image2']['error'][$key];
-				$ftemp['size'] = $_FILES['image2']['size'][$key];
+				$ftemp['name'] = $_FILES['files']['name'][$key];
+				$ftemp['type'] = $_FILES['files']['type'][$key];
+				$ftemp['tmp_name'] = $_FILES['files']['tmp_name'][$key];
+				$ftemp['error'] = $_FILES['files']['error'][$key];
+				$ftemp['size'] = $_FILES['files']['size'][$key];
 				
 				$filepath = "upload/";
 				$data['image'] = $this->model_core_file->saveFile($ftemp,$filepath,"any","temp");
