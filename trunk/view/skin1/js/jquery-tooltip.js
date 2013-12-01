@@ -33,7 +33,7 @@ var stickytooltip={
 	hidebox:function($, $tooltip){
 		if (!this.isdocked){
 			$tooltip.stop(false, true).hide()
-			$tooltip.css({borderColor:'#CCC'}).find('.stickystatus:eq(0)').css({background:this.stickybordercolors[0]}).html(this.stickynotice1)
+			//$tooltip.css({borderColor:'#CCC'}).find('.stickystatus:eq(0)').css({background:this.stickybordercolors[0]}).html(this.stickynotice1)
 		}
 	},
 

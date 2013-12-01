@@ -64,6 +64,8 @@ class ControllerGroupProduct extends Controller
 							  'template' => "module/product_list.tpl",
 							  'width' => 150,
 							  'height' =>150,
+							  'widthpreview' => 450,
+						  	  'heightpreview' =>450,
 							  'paging' => true,
 							  'sorting' =>true
 							  );

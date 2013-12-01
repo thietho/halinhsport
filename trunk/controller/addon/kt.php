@@ -84,7 +84,9 @@ class ControllerAddonKt extends Controller
 							  'width' => 108,
 							  'height' =>108,
 							  'widthpreview' => 450,
-						 	  'heightpreview' =>450
+						 	  'heightpreview' =>450,
+							  'paging' => true,
+							  'sorting' =>true
 							  );
 		$arr = array("",12,$header,$template,$medias);
 		$this->data['output'] = $this->loadModule('module/productlist','index',$arr);

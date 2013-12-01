@@ -7,12 +7,12 @@
                 	<?php $media = $medias[$i]?>
                     <?php $i++?>
                     <?php if(count($media)){ ?>
-                     <div class="ben-left product" ref="<?php echo $media['imagetpreview']?>" title="<?php echo $media['keyword']?>">
+                     <div class="ben-left product link_hover" data-tooltip="sticky1" ref="<?php echo $media['imagetpreview']?>" title="<?php echo $media['title']?>" price="<?php echo $media['pricepromotion']==0?$this->string->numberFormate($media['price']):$this->string->numberFormate($media['pricepromotion']) ?>" summary="<?php echo $media['summary']?>">
                         <table>
                             <tr class="product-list-image">
                                 <td>
                                     <?php if($media['discountpercent']){ ?>
-                                    <div class="flagdiscount ben-icon">-<?php echo $media['discountpercent']?>%</div>
+                                    <div class="flagdiscount ben-icon"></div>
                                     <?php } ?>
                                     <?php if(in_array("sanphamhot",$media['properties'])){ ?>
                                     <div id="ben-icon-hot" class="ben-icon">
