@@ -89,7 +89,7 @@ class ControllerPageHome extends Controller
 		$arr = array('san-pham');
 		$this->data['leftsitebar']['produtcategory'] = $this->loadModule('sitebar/catalogue','index',$arr);
 		$this->data['leftsitebar']['search'] = $this->loadModule('sitebar/searchproduct');
-		$this->data['leftsitebar']['dknhantinh'] = $this->loadModule('sitebar/dangkynhantin');
+		//$this->data['leftsitebar']['dknhantinh'] = $this->loadModule('sitebar/dangkynhantin');
 		
 		//$this->data['leftsitebar']['exchange'] = $this->loadModule('sitebar/exchange');
 		
