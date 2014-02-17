@@ -85,4 +85,3 @@ function sendMessage()
 </div>			
 </form>
 </div>
-<?php echo $sododuongdi?>

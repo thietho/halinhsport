@@ -16,9 +16,7 @@ class ControllerModuleContact extends Controller
 		
 		$this->data['post']['description'] = html_entity_decode($this->data['post']['description']);
 		$this->document->title .= " - ".$this->data['post']['title'];
-		$arr = array("sododuongdi");
-						
-		$this->data['sododuongdi'] = $this->loadModule('module/location','loadLocation',$arr);
+		
 		
 		$this->id="contact";
 		$this->template="module/contact.tpl";
