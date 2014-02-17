@@ -72,7 +72,7 @@ final class Member {
 			}
     	}
 		//$this->updatelistonline();
-		$this->writelog();
+		//$this->writelog();
   	}
 		
   	public function login($username, $password) 
