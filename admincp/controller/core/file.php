@@ -68,8 +68,13 @@ class ControllerCoreFile extends Controller
 			$this->model_core_file->updateFileTemp($this->data['files'][$i]['fileid']);
 			$this->data['files'][$i]['imagethumbnail'] = HelperImage::resizePNG($this->data['files'][$i]['filepath'], 130, 130);
 			if(!$this->string->isImage($this->data['files'][$i]['extension']))
-				$this->data['files'][$i]['imagethumbnail'] = DIR_IMAGE."icon/dinhkem.png";
-			
+			{
+				$urlext = HTTP_IMAGE."icon/48px/".$this->data['files'][$i]['extension'].".png";
+				
+				if(!@fopen($urlext,"r"))
+					$urlext = HTTP_IMAGE."icon/48px/_blank.png";
+				$this->data['files'][$i]['imagethumbnail'] = $urlext;
+			}
 		}
 		
 		
@@ -109,7 +114,16 @@ class ControllerCoreFile extends Controller
 		if($this->string->isImage($file['extension']))
 			$file['imagepreview'] = HelperImage::resizePNG($file['filepath'], $width, $height);
 		else
-			$file['imagepreview'] = DIR_IMAGE."icon/dinhkem.png";
+		{
+			
+			
+			$urlext = HTTP_IMAGE."icon/48px/".$file['extension'].".png";
+			
+			if(!@fopen($urlext,"r"))
+				$urlext = HTTP_IMAGE."icon/48px/_blank.png";
+			$file['imagepreview'] = $urlext;
+			
+		}
 		$this->data['output'] = json_encode(array('file' => $file));
 		$this->id='post';
 		$this->template="common/output.tpl";

@@ -20,6 +20,7 @@
                         <th>Công nợ</th>
                         <th>Số ngày công nợ</th>
                         <th>Ngày đến hạn thanh toán công nợ</th>
+                        <th>Tình trạng</th>
                         <?php if($dialog!=true){ ?>
                         <th>Control</th>     
                         <?php } ?>
@@ -47,6 +48,7 @@
                         <td class="number"><?php echo $this->string->numberFormate($item['congno'])?></td>
                         <td class="number"><?php echo $this->string->numberFormate($item['songaycongno'])?></td>
                         <td align="center"><?php echo $this->date->formatMySQLDate($this->date->addday($item['ngaylap'],$item['songaycongno']))?></td>
+                        <td><?php echo $this->document->status_phieunhapxuat[$item['trangthai']]?></td>
                         <?php if($dialog!=true){ ?>
                         <td class="link-control">
                             <?php if($this->user->checkPermission("quanlykho/phieunhap/update")==true){ ?>

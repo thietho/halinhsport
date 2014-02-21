@@ -3,7 +3,7 @@
 	<div class="section-title">
     	<?php echo $breadcrumb?>
     </div>
-    
+    <div id="error" class="error" style="display:none"></div>
     <div class="section-content padding1">
     
     	<form name="frmPost" id="frmPost"  action="" method="post" enctype="multipart/form-data">
@@ -210,14 +210,15 @@ $('#title').change(function(e) {
                         </p>
                         <?php } ?>
                     	<?php if($hasPrice) {?>
-                        <!--<p id="frmgiaban">
+                        <p id="frmgiaban">
                         	<label>Giá bán</label>
                             <div id="giaban"></div>
-                        </p>-->
+                        </p>
                         
                         <p>
                             <label><?php echo $text_price?></label><br>
-                            <input class="text number" type="text" id="price" name="price" value="<?php echo $post['price']?>" size="60" />
+                            <input class="text number" type="text" id="price" name="price" value="<?php echo $post['price']?>"/>
+                            <input class="text short" type="text" id="noteprice" name="noteprice" value="<?php echo $post['noteprice']?>" />
                         </p>
                         <p>
                             <label>Phần trăm giảm giá</label><br>
@@ -225,7 +226,7 @@ $('#title').change(function(e) {
                         </p>
                         <p>
                             <label>Giá khuyến mãi</label><br>
-                            <input class="text number" type="text" id="pricepromotion" name="pricepromotion" value="<?php echo $post['pricepromotion']?>" size="60" />
+                            <input class="text number" type="text" id="pricepromotion" name="pricepromotion" value="<?php echo $post['pricepromotion']?>" />
                         </p>
                         <script language="javascript">
 						$('#discountpercent').keyup(function(e) {
@@ -262,11 +263,12 @@ $('#title').change(function(e) {
                     	
                     	<p id="pnImage">
                             <label for="image"><?php echo $entry_image?></label><br />
-                            <a  class="button" onclick="browserFileImage()"><?php echo $entry_selectphoto?></a><br />
-                            <img id="imagepreview" src="<?php echo $imagethumbnail?>" onclick="showFile($('#imageid').val())"/>
-                            <input type="hidden" id="imagepath" name="imagepath" value="<?php echo $post['imagepath']?>" />
-                            <input type="hidden" id="imageid" name="imageid" value="<?php echo $post['imageid']?>" />
-                            <input type="hidden" id="imagethumbnail" name="imagethumbnail" value="<?php echo $post['imagethumbnail']?>" />
+                            
+                            <input type="button" class="button" value="<?php echo $entry_photo ?>" onclick="browserFile('imageid','single')"/><br />
+                            <img id="imageid_preview" src="<?php echo $imagethumbnail?>" onclick="showFile($('#imageid_fileid').val())"/>
+                            <input type="hidden" id="imageid_filepath" name="imagepath" value="<?php echo $post['imagepath']?>" />
+                            <input type="hidden" id="imageid_fileid" name="imageid" value="<?php echo $post['imageid']?>" />
+                            
                         </p>
                         
                         
@@ -275,7 +277,8 @@ $('#title').change(function(e) {
                         <div class="loadingimage" style="display:none"></div>
                        <?php if($hasAttachment){ ?>
                         <p>
-                        	<a id="btnAddAttachment" class="button" onclick="browserFileAttachment()"><?php echo $entry_attachment?></a><br />
+                        	<input type="button" class="button" value="<?php echo $entry_photo ?>" onclick="browserFile('attachment','multi')"/>
+                        	
                         </p>
                         <p id="attachment">
                         </p>
@@ -295,7 +298,14 @@ $('#title').change(function(e) {
 			if(count($item))
 			{
 ?>
-			$('#attachment').append(attachment.creatAttachmentRow("<?php echo $item['fileid']?>","<?php echo $item['filename']?>","<?php echo $item['imagethumbnail']?>"));
+				$.getJSON("?route=core/file/getFile&fileid=<?php echo $item['fileid']?>&width=50", 
+				function(file) 
+				{
+					
+					$('#attachment').append(attachment.creatAttachmentRow(file.file.fileid,file.file.filename,file.file.imagepreview));
+					
+				});
+			
 <?php
 			}
 		}
@@ -373,11 +383,13 @@ $(document).ready(function(e) {
             </div>
             <?php } ?>
             <div id="fragment-detail">
-            	<a class="button" onclick="browserFileEditor()"><?php echo $entry_photo ?></a>
-                <input type="hidden" id="listselectfile" name="listselectfile" />
+            	
+                <input type="button" class="button" value="<?php echo $entry_photo ?>" onclick="browserFile('editor1','editor')"/>
+                <input type="button" class="button" value="Chọn video" onclick="browserFile('editor1','video')"/>
+                
             	<div>
                 	<p>
-                        <textarea name="description" id="editor1" cols="80" rows="10"><?php echo $post['description']?></textarea>
+                        <textarea name="description" id="editor1" ><?php echo $post['description']?></textarea>
                     </p>
                 </div>
             </div>
@@ -619,6 +631,7 @@ function save()
 			}
 			else
 			{
+				$('#error').html(data).show('slow');
 				$.unblockUI();
 			}
 			
@@ -627,8 +640,7 @@ function save()
 
 
 
-var DIR_UPLOADPHOTO = "<?php echo $DIR_UPLOADPHOTO?>";
-var DIR_UPLOADATTACHMENT = "<?php echo $DIR_UPLOADATTACHMENT?>";
+
 $(document).ready(function() { 
 	
 	setCKEditorType('editor1',2);
@@ -652,182 +664,14 @@ $(document).ready(function() {
 <script language="javascript">
 
 
-function browserFileImage()
-{
-    
-	
-	$("#popup").attr('title','Chọn hình');
-		$( "#popup" ).dialog({
-			autoOpen: false,
-			show: "blind",
-			hide: "explode",
-			width: $(document).width()-100,
-			height: 600,
-			modal: true,
-			
-		});
-	
-		
-		$("#popup-content").load("?route=core/file&dialog=true&type=single",function(){
-			$("#popup").dialog("open");	
-		});
-		
-}
-function intSeleteFile(type)
-{
-	
-	switch(type)
-	{
-		case "single":
-			$('.filelist').click(function(e) {
-				$('#imagepreview').attr('src',$(this).attr('imagethumbnail'));
-				$('#imageid').val(this.id);
-				$('#imagepath').val($(this).attr('filepath'));
-				$('#imagethumbnail').val($(this).attr('imagethumbnail'));
-				$("#popup").dialog( "close" );
-			});			
-			break;
-			
-		case "editor":
-			$('.filelist').click(function(e) {
-
-				
-				width = "";
-							
-				var value = "<img src='<?php echo HTTP_IMAGE?>"+$(this).attr('filepath')+"'/>";
-				
-				var oEditor = CKEDITOR.instances['editor1'] ;
-				
-				
-				// Check the active editing mode.
-				if (oEditor.mode == 'wysiwyg' )
-				{
-					// Insert the desired HTML.
-					oEditor.insertHtml( value ) ;
-					
-					var temp = oEditor.getData()
-					oEditor.setData( temp );
-				}
-				else
-					alert( 'You must be on WYSIWYG mode!' ) ;
-				$("#popup").dialog( "close" );
-			});			
-			break;
-		case "multi":
-			$('.filelist').click(function(e) {
-                //$('#popup-seletetion').append($(this))
-            });
-			break;
-	}
-}
-function browserFileAttachment()
-{
-
-	$("#popup").attr('title','Chọn hình');
-		$( "#popup" ).dialog({
-			autoOpen: false,
-			show: "blind",
-			hide: "explode",
-			width: $(document).width()-100,
-			height: 600,
-			modal: true,
-			buttons: {
-				
-				
-				
-				/*'Xem danh sach':function()
-				{
-					$( "#popup-selete" ).show('fast',function(){
-						$( "#popup-selete" ).position({
-							my: "center",
-							at: "center",
-							of: "#popup"
-						});
-						$( "#popup-selete" ).draggable();
-					});
-					$('.closeselect').click(function(e) {
-                        $( "#popup-selete" ).hide('fast');
-                    });
-				},*/
-				'Chọn': function() 
-				{
-					$('.selectfile').each(function(index, element) {
-                        $.getJSON("?route=core/file/getFile&fileid="+this.id+"&width=50", 
-							function(file) 
-							{
-								
-								$('#attachment').append(attachment.creatAttachmentRow(file.file.fileid,file.file.filename,file.file.imagepreview));
-								
-							});
-						
-                    });
-					$('#popup-seletetion').html("");
-					$( this ).dialog( "close" );
-				},
-			}
-		});
-	
-		
-		$("#popup-content").load("?route=core/file&dialog=true&type=multi",function(){
-			$("#popup").dialog("open");	
-		});
-}
-function browserFile()
-{
-    //var re = openDialog("?route=core/file&dialog=true",800,500);
-	$('#handler').val('file');
-	$('#outputtype').val('file');
-	showPopup("#popup", 800, 500);
-	$("#popup").html("<img src='view/skin1/image/loadingimage.gif' />");
-	$("#popup").load("?route=core/file&dialog=true")
-		
-}
-
-function browserFileEditor()
-{
-
-	
-	$("#popup").attr('title','Chọn hình');
-		$( "#popup" ).dialog({
-			autoOpen: false,
-			show: "blind",
-			hide: "explode",
-			width: 800,
-			height: 600,
-			modal: true,
-			
-		});
-	
-		
-		$("#popup-content").load("?route=core/file&dialog=true&type=editor",function(){
-			$("#popup").dialog("open");	
-		});
-}
 
 
-function Attachment()
-{
-	this.index = 0;
-	this.removeAttachmentRow = function(index)
-	{
-		$("#delfile").append('<input type="hidden" id="attimageid'+attachment.index+'" name="delfile['+index+']" value="'+$("#attimageid"+index).val()+'" />');
-		$("#attrows"+index).html("")
-	}
-	this.creatAttachmentRow = function(iid,path,thums)
-	{
-		
-		row = '<div id="attrows'+attachment.index+'"><img src="'+thums+'" /><input type="hidden" id="attimageid'+attachment.index+'" name="attimageid['+attachment.index+']" value="'+iid+'" />'+path+' <a id="removerow'+attachment.index+'" onclick="attachment.removeAttachmentRow('+attachment.index+')" class="button" >Remove</a></div>';
-		attachment.index++;
-		return row;	
-	}
-	this.creatAttachmentRowView = function(iid,name,path,thums)
-	{
-		row = '<div id="attrows'+attachment.index+'"><img src="'+thums+'" /><input type="hidden" id="attimageid'+attachment.index+'" name="attimageid['+attachment.index+']" value="'+iid+'" />'+'<a href="'+path+'" target="_blank">'+name+'</a>';
-		attachment.index++;
-		return row;
-	}
 
-}
-var attachment = new Attachment();
+
+
+
+
+
+
 
 </script>

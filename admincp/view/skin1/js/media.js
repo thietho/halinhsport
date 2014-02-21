@@ -121,7 +121,10 @@ function showFolderForm(folderid,folderparent)
 							$('#folderform').dialog("close");
 							$('#foldername' + folderid).html($('#foldername').val());
 							loadFolder();
-							selectFolder(folderparent);
+							if(folderparent!="")
+								selectFolder(folderparent);
+							else
+								selectFolder(folderid);
 						}
 						else
 						{

@@ -360,3 +360,200 @@ function logout()
 	);	
 }
 
+function selectFilm(eid,type)
+{
+    $('#handler').val(eid);
+	$('#outputtype').val(type);
+	$('body').append('<div id="filmform" style="display:none"></div>');
+	var eid = "#filmform";
+	$(eid).attr('title','Chọn film');
+		$( eid ).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "explode",
+			width: $(document).width()-100,
+			height: 600,
+			modal: true,
+			close:function()
+				{
+					$(eid).remove();
+				},
+			
+		});
+	
+		
+		$(eid).load("?route=lotte/movie&opendialog=true",function(){
+			$(eid).dialog("open");	
+		});
+		
+}
+
+function browserFile(eid,type)
+{
+    $('#handler').val(eid);
+	$('#outputtype').val(type);
+	switch(type)
+	{
+		case "single":
+			$("#popup").attr('title','Chọn hình');
+				$( "#popup" ).dialog({
+					autoOpen: false,
+					show: "blind",
+					hide: "explode",
+					width: $(document).width()-100,
+					height: 600,
+					modal: true,
+					
+				});
+			
+				
+				$("#popup-content").load("?route=core/file&dialog=true&type="+type,function(){
+					$("#popup").dialog("open");	
+				});			
+			break;
+		case "multi":
+			$("#popup").attr('title','Chọn hình');
+			$( "#popup" ).dialog({
+				autoOpen: false,
+				show: "blind",
+				hide: "explode",
+				width: $(document).width()-100,
+				height: 600,
+				modal: true,
+				buttons: {
+					
+					
+					
+					
+					'Chọn': function() 
+					{
+						$('.selectfile').each(function(index, element) {
+						$.getJSON("?route=core/file/getFile&fileid="+this.id+"&width=50", 
+							function(file) 
+							{
+								
+								$('#'+ $('#handler').val()).append(attachment.creatAttachmentRow(file.file.fileid,file.file.filename,file.file.imagepreview));
+								
+							});
+				
+						});
+						$('#popup-seletetion').html("");
+						$( this ).dialog( "close" );
+					},
+				}
+			});
+		
+			
+			$("#popup-content").load("?route=core/file&dialog=true&type="+type,function(){
+				$("#popup").dialog("open");	
+			});
+			break;
+	}
+		
+}
+function intSeleteFile(type)
+{
+	
+	switch(type)
+	{
+		case "single":
+			$('.filelist').click(function(e) {
+				$('#'+ $('#handler').val()+'_fileid').val($(this).attr('id'));
+				$('#'+ $('#handler').val()).html($(this).attr('filepath'));
+				$('#'+ $('#handler').val()+'_filepath').val($(this).attr('filepath'));
+				$('#'+ $('#handler').val()+'_preview').attr('src',$(this).attr('imagethumbnail'));
+				
+				/*$('#imagepreview').attr('src',$(this).attr('imagethumbnail'));
+				$('#imageid').val(this.id);
+				$('#imagepath').val($(this).attr('filepath'));
+				$('#imagethumbnail').val($(this).attr('imagethumbnail'));*/
+				$("#popup").dialog( "close" );
+				
+				
+			});			
+			break;
+			
+		case "editor":
+			$('.filelist').click(function(e) {
+
+				
+				width = "";
+							
+				var value = "<img src='"+ HTTP_IMAGE+$(this).attr('filepath')+"'/>";
+				
+				var oEditor = CKEDITOR.instances[''+$('#handler').val()] ;
+				
+				
+				// Check the active editing mode.
+				if (oEditor.mode == 'wysiwyg' )
+				{
+					// Insert the desired HTML.
+					oEditor.insertHtml( value ) ;
+					
+					var temp = oEditor.getData()
+					oEditor.setData( temp );
+				}
+				else
+					alert( 'You must be on WYSIWYG mode!' ) ;
+				$("#popup").dialog( "close" );
+			});			
+			break;
+		case "video":
+			$('.filelist').click(function(e) {
+
+				
+				width = "";
+							
+				
+				var value = '<video width="100%"  controls="true">';
+                value += '<source src="'+ HTTP_IMAGE+$(this).attr('filepath')+'" type="video/mp4">';
+                                              
+                value += 'Your browser does not support the video tag.';
+                value += '</video>';
+				var oEditor = CKEDITOR.instances[''+$('#handler').val()] ;
+				
+				
+				// Check the active editing mode.
+				if (oEditor.mode == 'wysiwyg' )
+				{
+					// Insert the desired HTML.
+					oEditor.insertHtml( value ) ;
+					
+					var temp = oEditor.getData()
+					oEditor.setData( temp );
+				}
+				else
+					alert( 'You must be on WYSIWYG mode!' ) ;
+				$("#popup").dialog( "close" );
+			});			
+			break;
+		
+		case "multi":
+			
+			break;
+	}
+}
+function Attachment()
+{
+	this.index = 0;
+	this.removeAttachmentRow = function(index)
+	{
+		$("#delfile").append('<input type="hidden" id="attimageid'+attachment.index+'" name="delfile['+index+']" value="'+$("#attimageid"+index).val()+'" />');
+		$("#attrows"+index).html("")
+	}
+	this.creatAttachmentRow = function(iid,path,thums)
+	{
+		
+		row = '<div id="attrows'+attachment.index+'"><img src="'+thums+'" /><input type="hidden" id="attimageid'+attachment.index+'" name="attimageid['+attachment.index+']" value="'+iid+'" />'+path+' <a id="removerow'+attachment.index+'" onclick="attachment.removeAttachmentRow('+attachment.index+')" class="button" >Remove</a></div>';
+		attachment.index++;
+		return row;	
+	}
+	this.creatAttachmentRowView = function(iid,name,path,thums)
+	{
+		row = '<div id="attrows'+attachment.index+'"><img src="'+thums+'" /><input type="hidden" id="attimageid'+attachment.index+'" name="attimageid['+attachment.index+']" value="'+iid+'" />'+'<a href="'+path+'" target="_blank">'+name+'</a>';
+		attachment.index++;
+		return row;
+	}
+
+}
+var attachment = new Attachment();

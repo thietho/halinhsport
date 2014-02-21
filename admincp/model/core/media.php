@@ -24,6 +24,7 @@ class ModelCoreMedia extends ModelCoreFile
 							'source',
 							'saleprice',
 							'price',
+							'noteprice',
 							'discountpercent',
 							'pricepromotion',
 							'imageid',
@@ -679,7 +680,7 @@ class ModelCoreMedia extends ModelCoreFile
 	{
 		$sql = "SELECT sum(soluong) as soluong, madonvi
 				FROM  `qlkphieunhapxuat_media` 
-				WHERE mediaid = '".$mediaid."' AND loaiphieu='".$loaiphieu."'
+				WHERE mediaid = '".$mediaid."' AND loaiphieu like '".$loaiphieu."%'
 				Group by madonvi
 				";
 		$query = $this->db->query($sql);
@@ -703,6 +704,8 @@ class ModelCoreMedia extends ModelCoreFile
 		$media = $this->getItem($mediaid);
 		
 		$arrnhap = $this->getSoLuong($mediaid,'NK');
+		//$arrnhapkhtra = $this->getSoLuong($mediaid,'NK-KHTL');
+		//$arrnhap = array_merge($arrnhap,$arrnhapkhtra);
 		
 		$soluongnhap = $this->model_quanlykho_donvitinh->toDonViTinh($arrnhap,$media['unit']);
 		

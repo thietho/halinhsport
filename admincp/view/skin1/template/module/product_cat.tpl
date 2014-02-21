@@ -21,7 +21,7 @@ var CLASSES = ($.treeview.classes = {
 </script>
 <h3>Danh mục sản phẩm</h3>
 <?php if($this->user->checkPermission("module/product/addcat")==true){ ?>
-<a class="showproduct" href="?route=module/product">Tất cả</a><a class='addcat' cparent=''><img src="<?php echo DIR_IMAGE?>icon/add.png" width="19px"></a>
+<a class="showproduct" href="?route=module/product">Tất cả</a><a class='addcat' cparent="<?php echo $root?>"><img src="<?php echo DIR_IMAGE?>icon/add.png" width="19px"></a>
 <?php } ?>
 <ul id="group0">
 	<?php echo $catshow?>

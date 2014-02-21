@@ -10,7 +10,8 @@
                 <?php if($media['code']!="") echo $media['code']."<br>"?>
                 <?php if($media['color']!="") echo "Màu: ".$media['color']."<br>"?>
                 Giá: <?php echo $this->string->numberFormate($media['price'])?><br />
-                Giá khuyến mãi: <?php echo $this->string->numberFormate($media['pricepromotion'])?>
+                Giá khuyến mãi: <?php echo $this->string->numberFormate($media['pricepromotion'])?><br />
+                Tồn: <?php echo $media['tonkho']?>
             </td>
         </tr>
     </table>
@@ -27,9 +28,10 @@
             	<?php echo $item['title']?>(<?php echo $this->document->getDonViTinh($item['unit'])?>)<br>
                 <?php if($item['code']!="") echo $item['code']."<br>"?>
                 <?php if($media['color']!="") echo "Màu: ".$item['color']."<br>"?>
-                <br />
+                
                 Giá: <?php echo $this->string->numberFormate($item['price'])?><br />
-                Giá khuyến mãi: <?php echo $this->string->numberFormate($item['pricepromotion'])?>
+                Giá khuyến mãi: <?php echo $this->string->numberFormate($item['pricepromotion'])?><br />
+                Tồn: <?php echo $item['tonkho']?>
             </td>
         </tr>
     </table>

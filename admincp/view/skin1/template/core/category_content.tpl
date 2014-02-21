@@ -62,9 +62,9 @@
                     <div class="col2 right">
                     	
                     	<p id="pnImage">
-                            <label for="image">Image</label><br />
-                            <a id="btnAddImage" class="button">Select main photo</a><br />
-                            <img id="preview" src="<?php echo $post['imagethumbnail']?>" />
+                            <label for="image"><?php echo $entry_image?></label><br />
+                            <a  class="button" onclick="browserFileImage()">Chọn hình</a><br />
+                            <img id="imagepreview" src="<?php echo $imagethumbnail?>" onclick="showFile($('#imageid').val())"/>
                             <input type="hidden" id="imagepath" name="imagepath" value="<?php echo $post['imagepath']?>" />
                             <input type="hidden" id="imageid" name="imageid" value="<?php echo $post['imageid']?>" />
                             <input type="hidden" id="imagethumbnail" name="imagethumbnail" value="<?php echo $post['imagethumbnail']?>" />
@@ -74,8 +74,9 @@
                         <div id="errorupload" class="error" style="display:none"></div>
                         
                         <div class="loadingimage" style="display:none"></div>
+                       	
                         <p>
-                        	<a id="btnAddAttachment" class="button">Select other photo</a><br />
+                        	<a id="btnAddAttachment" class="button" onclick="browserFileAttachment()">Chọn hình phụ</a><br />
                         </p>
                         <p id="attachment">
                         </p>
@@ -134,12 +135,10 @@
 
 </div>
 <div id="popup" class="hidden"></div>
-<script src='<?php echo DIR_JS?>ajaxupload.js' type='text/javascript' language='javascript'> </script>
 
 
 <script type="text/javascript" charset="utf-8">
-var DIR_UPLOADPHOTO = "<?php echo $DIR_UPLOADPHOTO?>";
-var DIR_UPLOADATTACHMENT = "<?php echo $DIR_UPLOADATTACHMENT?>";
+
 $(document).ready(function() { 
 	setCKEditorType('editor1',0);
 	
@@ -147,9 +146,6 @@ $(document).ready(function() {
 	
 });
 </script>
-
-<script src="<?php echo DIR_JS?>uploadpreview.js" type="text/javascript"></script>
-<script src="<?php echo DIR_JS?>uploadattament.js" type="text/javascript"></script>
 
 
 

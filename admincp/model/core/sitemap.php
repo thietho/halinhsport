@@ -212,6 +212,7 @@ class ModelCoreSitemap extends Model
 		$othername = $this->db->escape(@$data['othername']);
 		$position=(int)@$data['position'];
 		$moduleid=$this->db->escape(@$data['moduleid']);
+		$forward = $this->db->escape(@$data['forward']);
 		$imageid=(int)@$data['imageid'];
 		$imagepath = $this->db->escape(@$data['imagepath']);
 		$status=$this->db->escape(@$data['status']);
@@ -223,6 +224,7 @@ class ModelCoreSitemap extends Model
 						"othername",
 						"position",
 						"moduleid",
+						"forward",
 						"imageid",
 						"imagepath",
 						"status"
@@ -235,6 +237,7 @@ class ModelCoreSitemap extends Model
 						$othername,
 						$position,
 						$moduleid,
+						$forward,
 						$imageid,
 						$imagepath,
 						$status
@@ -252,6 +255,7 @@ class ModelCoreSitemap extends Model
 		$othername = $this->db->escape(@$data['othername']);
 		
 		$moduleid=$this->db->escape(@$data['moduleid']);
+		$forward = $this->db->escape(@$data['forward']);
 		$imageid=(int)@$data['imageid'];
 		$imagepath = $this->db->escape(@$data['imagepath']);
 		$status=$this->db->escape(@$data['status']);
@@ -263,6 +267,7 @@ class ModelCoreSitemap extends Model
 						"othername",
 						
 						"moduleid",
+						"forward",
 						"imageid",
 						"imagepath",
 						"status"
@@ -275,6 +280,7 @@ class ModelCoreSitemap extends Model
 						$othername,
 						
 						$moduleid,
+						$forward,
 						$imageid,
 						$imagepath,
 						$status

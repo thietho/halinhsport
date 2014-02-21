@@ -43,7 +43,12 @@
                             <?php } ?>
                         </td>
                         <td class="number">
-                            <b><?php echo $this->string->numberFormate($media['price'])?></b>
+                            <b>
+                            	<?php echo $this->string->numberFormate($media['price'])?>
+                                <?php if($media['noteprice']!=""){?>
+                                (<?php echo $media['noteprice']?>)
+                                <?php }?>
+                            </b>
                         </td>
                         <td class="number">
                             <b><?php echo $this->string->numberFormate($media['discountpercent'])?>%</b>

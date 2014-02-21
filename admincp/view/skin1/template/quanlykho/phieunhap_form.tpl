@@ -57,6 +57,17 @@
                         <input type="button" class="button" id="btnSelectNhanVienNhan" value="Chọn nhân viên nhận"/>
                     </p>
                     <p>
+                    	<label>Tình trạng</label><br />
+                        <select id="trangthai" name="trangthai">
+                        	<?php foreach($this->document->status_phieunhapxuat as $key => $val){?>
+                            <option value="<?php echo $key?>"><?php echo $val?></option>
+                            <?php } ?>
+                        </select>
+                        <script language="javascript">
+                        $('#trangthai').val("<?php echo $item['trangthai']?>");
+                        </script>
+                    </p>
+                    <p>
                         <label>Ghi chú</label><br />
                         <textarea id="ghichu" name="ghichu"><?php echo $item['ghichu']?></textarea>
                         
