@@ -1293,15 +1293,19 @@ ul.autocomplete {
 	height:150px;
 }
 
-.filename
-{
-	display:none;	
-}
+
 .folderlist
 {
-	width:145px;	
+	width:150px;	
 	height:150px;
 	background:url(../image/folder.png) no-repeat center center;
+}
+.filename
+{
+	margin-top: 133px;
+    position: absolute;
+    text-align: center;
+    width: 150px;
 }
 .folderlist table
 {

@@ -6,7 +6,7 @@ class ControllerCommonUploadattachment extends Controller
 		$this->load->helper('image');
 		$this->load->model('core/file');
 		//$this->data['output'] = json_encode(array('files' => $_FILES));
-		
+		$folderid = $this->request->get['folderid'];
 		$datas = array();
 		//print_r($_FILES['files']['name']);
 		foreach($_FILES['files']['name'] as $key => $item)
@@ -20,7 +20,8 @@ class ControllerCommonUploadattachment extends Controller
 				$ftemp['size'] = $_FILES['files']['size'][$key];
 				
 				$filepath = "upload/";
-				$data['image'] = $this->model_core_file->saveFile($ftemp,$filepath,"any","temp");
+				$data['image'] = $this->model_core_file->saveFile($ftemp,$filepath,"any","");
+				$this->model_core_file->updateFileCol($data['image']['fileid'],'folderid',$folderid);
 				/*if($data['image']['fileid'] == '')
 				{
 					$arr = array(
@@ -29,6 +30,7 @@ class ControllerCommonUploadattachment extends Controller
 					$this->data['output'] = json_encode(array('files' => $arr));
 				}
 				else*/
+				
 				{
 					$file = $this->model_core_file->getFile($data['image']['fileid']);
 					if($this->string->isImage($file['extension']))

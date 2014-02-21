@@ -91,7 +91,10 @@ foreach($status as $key=>$val)
                                                        
                     </select>
             </p>
-            
+            <p>
+            	<label>Link</label>
+        		<input type="text" id="forward" name="forward" value="<?php echo $sitemap['forward']?>" class="text" size="80"/>
+            </p>
             <p>
             	<label><?php echo $lbl_image?></label><br />
             	<input type="button" value="<?php echo $entry_photo ?>" class="button" onclick="browserFileImage()"/>
@@ -134,69 +137,8 @@ function save()
 		}
 	);
 }
-function browserFileImage()
-{
-    //var re = openDialog("?route=core/file",800,500);
-	$('#handler').val('image');
-	$('#outputtype').val('image');
-	showPopup("#popup", 800, 500);
-	$("#popup").html("<img src='view/skin1/image/loadingimage.gif' />");
-	$("#popup").load("?route=core/file")
-		
-}
-function addImageTo()
-{
-	var str= trim($("#listselectfile").val(),",");
-	var arr = str.split(",");
-	
-	if(str!="")
-	{
-		for (i=0;i<arr.length;i++)
-		{
-			$.getJSON("?route=core/file/getFile&fileid="+arr[i], 
-				function(data) 
-				{
-					switch($('#outputtype').val())
-					{
-						case 'editor':
-							width = "";
-							
-							var value = "<img src='<?php echo HTTP_IMAGE?>"+data.file.filepath+"'/>";
-							
-							var oEditor = CKEDITOR.instances[$('#handler').val()] ;
-							
-							
-							// Check the active editing mode.
-							if (oEditor.mode == 'wysiwyg' )
-							{
-								// Insert the desired HTML.
-								oEditor.insertHtml( value ) ;
-								$("#listselectfile").val('');
-								var temp = oEditor.getData()
-								oEditor.setData( temp );
-							}
-							else
-								alert( 'You must be on WYSIWYG mode!' ) ;
-							break;
-						case 'image':
-							var handler = $('#handler').val();
-							$('#'+handler+'id').val(data.file.fileid)
-							$('#'+handler+'path').val(data.file.filepath)
-							$.getJSON("?route=core/file/getFile&fileid="+data.file.fileid+"&width=200", 
-							function(file) 
-							{
-								$('#'+handler+'thumbnail').val(file.file.imagepreview)
-								$('#'+handler+'preview').attr('src',file.file.imagepreview)
-							});
-							
-							
-							break;
-						
-					}
-				});
-		}
-	}
-}
+
+
 function removeImage()
 {
 	$('#imagepath').val("");

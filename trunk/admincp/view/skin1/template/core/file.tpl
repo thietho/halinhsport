@@ -14,7 +14,7 @@
             			
             
             &nbsp;&nbsp;<input type="button" id="btnfilter" name="btnfilter" value="Filter" class="button"/>
-            <input id="fileupload" type="file" name="files[]" data-url="?route=common/uploadattachment" multiple value="Chon file">
+            
             <div class="progress" id="progress'+t+'"><div class="bar" style="width: 0%;"></div></div>
             <table>
                 <tbody id="listfile">
@@ -27,7 +27,7 @@
         	<p id="pnImage">
                 
                 
-                
+                <input id="fileupload" class="button" type="file" name="files[]"  multiple value="Chon file" >
                 <input type="button" class="button" value="Tạo thư mục" onclick="showFolderForm('',$('#folderidcur').val())"/>
                 <input type="button" class="button" value="Sửa tên thư mục" onclick="showFolderForm($('#folderidcur').val(),'')"/>
                 <input type="button" class="button" value="Xóa thư mục" onclick="delFolder($('#folderidcur').val())"/>
@@ -90,6 +90,12 @@ $(function () {
             /*$.each(data.result.files, function (index, file) {
                 $('<p/>').text(file.name).appendTo(document.body);
             });*/
+			/*var fileid = response.files[i].imageid;
+				var folderid = $('#folderidcur').val();
+			$.get("?route=core/file/updateFolder&fileid="+fileid+"&folderid="+folderid,
+				function(){
+					 showResult("?route=core/file/getList&folderid="+folderid);
+				});*/
 			showResult("?route=core/file/getList&folderid="+ $('#folderidcur').val());
         },
 		progressall: function (e, data) {
@@ -183,6 +189,11 @@ function showResult(url)
 	$("#result").load(url,function(){
 		if("<?php echo $_GET['dialog']?>" =='true')
 			intSeleteFile("<?php echo $_GET['type']?>");
+			$('#fileupload').fileupload({
+				// Uncomment the following to send cross-domain cookies:
+				//xhrFields: {withCredentials: true},
+				url: '?route=common/uploadattachment&folderid='+ $('#folderidcur').val()
+			});
 	});
 }
 //callbackUploadFile();

@@ -11,7 +11,7 @@
                 <!--<label>Người bán</label>
                 <input type="text" id="nguoithuchien" name="nguoithuchien" class="text" value="" />-->
                 <label>Khách hàng</label>
-                <input type="text" id="nguoinhan" name="nguoinhan" class="text" value="" />
+                <input type="text" id="tenkhachhang" name="tenkhachhang" class="text" value="" />
                 <label>Từ ngày</label>
                 <input type="text" class="text date" id="tungay" />
                 <script language="javascript">
@@ -117,8 +117,8 @@ function searchForm()
 	if($("#frm_phieunhap #maphieu").val() != "")
 		url += "&maphieu=" + $("#frm_phieunhap #maphieu").val();
 	
-	if($("#frm_phieunhap #nguoinhan").val() != "")
-		url += "&nguoinhan="+ encodeURI($("#frm_phieunhap #nguoinhan").val());
+	if($("#frm_phieunhap #tenkhachhang").val() != "")
+		url += "&tenkhachhang="+ encodeURI($("#frm_phieunhap #tenkhachhang").val());
 	
 	if($("#frm_phieunhap #tungay").val() != "")
 		url += "&tungay="+ encodeURI($("#frm_phieunhap #tungay").val());

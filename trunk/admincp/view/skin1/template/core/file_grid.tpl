@@ -23,7 +23,9 @@
 	<div class="left">
     <div class="filelist  text-center" id="<?php echo $file['fileid']?>" imagethumbnail="<?php echo $file['imagethumbnail']?>" filename="<?php echo $file['filename']?>" filepath="<?php echo $file['filepath']?>" style="background:url('<?php echo $file['imagethumbnail']?>') no-repeat center center" title="<?php echo $file['filename']?>">
         
-        <p class="filename"><?php echo $file['filename']?></p>
+		<p class="filename"><?php echo substr($file['filename'],0,20)?></p>
+            
+        
         
     </div>
 	
@@ -51,7 +53,7 @@ $('.filelist').hover(
 	},
 	function(){
 		$(this).css('background-color','transparent');
-		$(this).children('.filename').css('overflow','hidden');
+		//$(this).children('.filename').css('overflow','hidden');
 	});
 	
 $('.folderlist').click(function(e) {

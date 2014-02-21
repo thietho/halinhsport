@@ -2,15 +2,17 @@
 <table class="data-table">
 	<thead>
         <tr>
-        	<th colspan="3">Thu</th>
-            <th colspan="3">Chi</th>
+        	<th colspan="4">Thu</th>
+            <th colspan="4">Chi</th>
         </tr>
         <tr>
         	<th>Mã phiếu</th>
         	<th>Loại</th>
-        	<th>Số tiền</th>
+        	<th>Công nợ</th>
+            <th>Số tiền</th>
             <th>Mã phiếu</th>
             <th>Loại</th>
+            <th>Công nợ</th>
             <th>Số tiền</th>
             
         </tr>
@@ -26,17 +28,19 @@
         <tr class="item">
         	<td><?php echo $item['thu'][$i]['maphieu']?></td>
             <td><?php echo $item['thu'][$i]['loai']?></td>
+            <td class="number"><?php echo $this->string->numberFormate($item['thu'][$i]['congno'])?></td>
             <td class="number"><?php echo $this->string->numberFormate($item['thu'][$i]['sotien'])?></td>
             <td><?php echo $item['chi'][$i]['maphieu']?></td>
             <td><?php echo $item['chi'][$i]['loai']?></td>
+            <td class="number"><?php echo $this->string->numberFormate($item['chi'][$i]['congno'])?></td>
             <td class="number"><?php echo $this->string->numberFormate($item['chi'][$i]['sotien'])?></td>
         </tr>
             <?php } ?>
         <?php } ?>
         <tr class="item">
-        	<td colspan="2" align="right">Tổng thu</td>
+        	<td colspan="3" align="right">Tổng thu</td>
             <td class="number"><?php echo $this->string->numberFormate($tongthu)?></td>
-            <td colspan="2" align="right">Tổng chi</td>
+            <td colspan="3" align="right">Tổng chi</td>
             <td class="number"><?php echo $this->string->numberFormate($tongchi)?></td>
         </tr>
     </tbody>

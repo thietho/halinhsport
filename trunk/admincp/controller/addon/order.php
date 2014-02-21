@@ -447,12 +447,13 @@ class ControllerAddonOrder extends Controller
 				$this->data['medias'][$i]['imagepreview'] = HelperImage::resizePNG($this->data['medias'][$i]['imagepath'], 100, 100);
 				
 			
-			
+			$this->data['medias'][$i]['tonkho'] = $this->model_core_media->getTonKho($media['mediaid']);
 			$data_child = $this->model_core_media->getListByParent($media['mediaid']," Order by position");
 			foreach($data_child as $key =>$child)
 			{
 				if($child['imagepath'])
 					$data_child[$key]['imagepreview'] = HelperImage::resizePNG($child['imagepath'], 100, 100);
+				$data_child[$key]['tonkho'] = $this->model_core_media->getTonKho($child['mediaid']);
 			}
 			$this->data['medias'][$i]['child'] = $data_child;
 			

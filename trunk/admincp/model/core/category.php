@@ -34,7 +34,7 @@ class ModelCoreCategory extends Model
 		{
 			$sql .= " Limit ".$from.",".$to;
 		}
-		
+		//echo $sql;
 		$query = $this->db->query($sql);
 		return $query->rows;
 	}

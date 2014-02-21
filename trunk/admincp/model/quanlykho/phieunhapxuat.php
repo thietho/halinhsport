@@ -65,7 +65,7 @@ class ModelQuanlykhoPhieunhapxuat extends Model
 		$congno = $this->string->toNumber($this->db->escape(@$data['congno']));
 		$ghichu=$this->db->escape(@$data['ghichu']);
 		$songaycongno=$this->string->toNumber($this->db->escape(@$data['songaycongno']));
-		$trangthai = "active";
+		$trangthai = $this->db->escape(@$data['trangthai']);;
 		$lydothu=$this->db->escape(@$data['lydothu']);
 		$thuphi=$this->string->toNumber($this->db->escape(@$data['thuphi']));
 		

@@ -23,9 +23,12 @@ class ControllerModuleProduct extends Controller
 	function index()
 	{	
 		
+		$this->data['nhanhieu'] = array();
+		$this->model_core_category->getTree("nhanhieu",$this->data['nhanhieu']);
+		unset($this->data['nhanhieu'][0]);
 		
 		$siteid = $this->user->getSiteId();
-		$this->data['sitemapid'] = $this->request->get['sitemapid'];
+		$this->data['sitemapid'] = urldecode($this->request->get['sitemapid']);
 		$this->data['breadcrumb'] = $this->model_core_sitemap->getBreadcrumb($this->data['sitemapid'], $siteid);
 		$this->id='content';
 		$this->template='module/product.tpl';
@@ -77,7 +80,11 @@ class ControllerModuleProduct extends Controller
 			$where .= " AND ((". implode(" AND ",$arr). ") OR (". implode(" AND ",$arrcode). "))";
 			//$where .= " AND ( title like '%".$keyword."%' OR summary like '%".$keyword."%' OR description like '%".$keyword."%')";
 		}
-		
+		$brand = urldecode($this->request->get['brand']);
+		if($brand !="")
+		{
+			$where .= " AND brand like '".$brand."'";
+		}
 		$where .= " Order by position, statusdate DESC";
 		$rows = $this->model_core_media->getList($where);
 		//Page
@@ -170,7 +177,9 @@ class ControllerModuleProduct extends Controller
 		//$this->data['catshow'] = "";
 		//foreach($data_catroot as $sitemap)
 		//{
-		$this->data['catshow'] .= $this->showTreeSiteMap("");
+		//$this->data['root'] = "san-pham";
+		$this->data['root'] = urldecode($this->request->get['root']);
+		$this->data['catshow'] .= $this->showTreeSiteMap($this->data['root']);
 		//}
 		
 		$this->id='content';
@@ -183,23 +192,27 @@ class ControllerModuleProduct extends Controller
 		$siteid = $this->user->getSiteId();
 		$str = "";
 		
-		$sitemaps = $this->model_core_sitemap->getListByParent($parentid, $siteid, "Active");
+		$sitemaps = $this->model_core_sitemap->getListByParent($parentid, $siteid);
 		
 		foreach($sitemaps as $item)
 		{
-			if($item['moduleid'] == "module/product")
+			//if($item['moduleid'] == "module/product")
 			{
 				$childs = $this->model_core_sitemap->getListByParent($item['sitemapid'], $siteid);
 				
-				$link = "<a href='?route=module/product&sitemapid=".$item['sitemapid']."'>".$item['sitemapname']."</a> ";
-				if($this->user->checkPermission("module/product/addcat")==true)
-					$link .= "<a class='addcat' cparent='".$item['sitemapid']."'><img src='".DIR_IMAGE."icon/add.png' width='19px'></a>";
-				if($this->user->checkPermission("module/product/editcat")==true)
-					$link .= "<a class='editcat' sitemapid='".$item['sitemapid']."'><img src='".DIR_IMAGE."icon/edit.png' width='19px'></a>";
-				if(count($childs) == 0)
+				$link = "<a>".$item['sitemapname']."</a> ";
+				if($item['moduleid'] == "module/product")
 				{
-					if($this->user->checkPermission("module/product/delcat")==true)
-						$link .= "<a class='delcat' sitemapid='".$item['sitemapid']."'><img src='".DIR_IMAGE."icon/del.png' width='19px'></a>";
+					$link = "<a href='?route=".$item['moduleid']."&sitemapid=".$item['sitemapid']."'>".$item['sitemapname']."</a> ";
+					if($this->user->checkPermission("module/product/addcat")==true)
+						$link .= "<a class='addcat' cparent='".$item['sitemapid']."'><img src='".DIR_IMAGE."icon/add.png' width='19px'></a>";
+					if($this->user->checkPermission("module/product/editcat")==true)
+						$link .= "<a class='editcat' sitemapid='".$item['sitemapid']."'><img src='".DIR_IMAGE."icon/edit.png' width='19px'></a>";
+					if(count($childs) == 0)
+					{
+						if($this->user->checkPermission("module/product/delcat")==true)
+							$link .= "<a class='delcat' sitemapid='".$item['sitemapid']."'><img src='".DIR_IMAGE."icon/del.png' width='19px'></a>";
+					}
 				}
 				$str .= "<li>";
 				
@@ -240,7 +253,7 @@ class ControllerModuleProduct extends Controller
 	public function editcat()
 	{
 		$siteid = $this->user->getSiteId();
-		$sitemapid = $this->request->get['sitemapid'];
+		$sitemapid = urldecode($this->request->get['sitemapid']);
 		$this->data['item'] = $this->model_core_sitemap->getItem($sitemapid, $siteid);
 		$this->id='content';
 		$this->template='module/product_cat_form.tpl';
@@ -249,7 +262,7 @@ class ControllerModuleProduct extends Controller
 	
 	public function delcat()
 	{
-		$id = $this->request->get['id'];
+		$id = urldecode($this->request->get['id']);
 		$this->model_core_sitemap->deleteSitemap($id, $this->user->getSiteId());	
 		
 		$this->data['output'] = "true";
@@ -310,7 +323,7 @@ class ControllerModuleProduct extends Controller
 		$mediaid = $this->request->get['mediaid'];
 		$this->data['media'] = $this->model_core_media->getItem($mediaid);
 		//Nhap kho
-		$where = " AND mediaid = '".$mediaid."' AND loaiphieu = 'NK'";
+		$where = " AND mediaid = '".$mediaid."' AND loaiphieu like 'NK%'";
 		$data_nhapkho = $this->model_quanlykho_phieunhapxuat->thongke($where);
 		//Xuat kho
 		$where = " AND mediaid = '".$mediaid."' AND loaiphieu = 'PBH'";

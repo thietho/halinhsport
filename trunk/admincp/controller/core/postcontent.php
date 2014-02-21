@@ -79,7 +79,7 @@ class ControllerCorePostcontent extends Controller
 				
 				$this->data['post']=$this->model_core_media->initialization($this->data['post']['mediaid'],$this->data['post']['mediatype']);
 				$this->data['post'] = $this->model_core_media->getItem($this->data['post']['mediaid']);
-				$this->data['post']['mediatype'] = "information";
+				$this->data['post']['mediatype'] = "module/information";
 				if($this->data['post']['title'] == '' && $route='module/information')
 				{
 					$this->data['post']['mediaid'] = $this->user->getSiteId().$sitemapid;
@@ -95,7 +95,7 @@ class ControllerCorePostcontent extends Controller
 				$this->data['post']=$this->model_core_media->initialization($this->data['post']['mediaid'],$this->data['post']['mediatype']);
 				$this->data['post'] = $this->model_core_media->getItem($this->data['post']['mediaid']);
 				
-				$this->data['post']['mediatype'] = "register";
+				$this->data['post']['mediatype'] = "module/register";
 				
 				if($this->data['post']['title'] == '' && $route='module/register')
 				{
@@ -135,6 +135,11 @@ class ControllerCorePostcontent extends Controller
 					{
 						$mediaparent = $this->model_core_media->getItem($this->data['post']['mediaparent']);
 						$this->data['post']['title'] = $mediaparent['title'];
+						$this->data['post']['code'] = $mediaparent['code'];
+						$this->data['post']['brand'] = $mediaparent['brand'];
+						$this->data['post']['sizes'] = $mediaparent['sizes'];
+						$this->data['post']['color'] = $mediaparent['color'];
+						$this->data['post']['material'] = $mediaparent['material'];
 						$this->data['post']['summary'] = $mediaparent['summary'];
 						$this->data['post']['description'] = $mediaparent['description'];
 						$this->data['post']['keyword'] = $mediaparent['keyword'];
@@ -321,15 +326,17 @@ class ControllerCorePostcontent extends Controller
 	
 	private function validate($data)
 	{
+		//print_r($data);
 		if($data['mediaid']!="")
 		{
 			if($this->validation->_isId(trim($data['mediaid'])) == false)
 			{
 				$this->error['mediaid'] ="ID không hợp lệ";	
 			}
-			if($data['id']=="")
+			if($data['id']=="" && $data['mediatype'] == "module/product")
 			{
 				$media = $this->model_core_media->getItem($data['mediaid']);
+				
 				if(count($media))
 					$this->error['mediaid'] ="ID đã được sử dụng";	
 			}

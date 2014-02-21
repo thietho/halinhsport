@@ -45,6 +45,7 @@
 
 <script language="javascript">
 var loading = '<center><img src="<?php echo DIR_IMAGE?>loading.gif"></center>';
+var HTTP_IMAGE = '<?php echo HTTP_IMAGE?>';
 </script>
 <body>
 <div id="header"><?php echo $header?></div>
@@ -57,7 +58,8 @@ var loading = '<center><img src="<?php echo DIR_IMAGE?>loading.gif"></center>';
 </div>
 
 <div id="footer"><?php echo $footer?></div>
-
+	<input type="hidden" id="handler" />
+	<input type="hidden" id="outputtype" />
 </div>
 
 </body>
