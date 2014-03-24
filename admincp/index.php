@@ -3,6 +3,7 @@
 	include('directory.php');
 	include(DIR_SYSTEM.'config/config.php');
 	include(DIR_SYSTEM.'config/startup.php');
+	
 	// Front Controller
 	$controller = new Front();
 	// Login

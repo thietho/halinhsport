@@ -345,7 +345,7 @@ class ControllerModuleProduct extends Controller
 				$arrdate[] = $this->date->getDate($item['ngaylap']);
 			}
 		}
-		sort(&$arrdate);
+		sort($arrdate);
 		foreach($arrdate as $date)
 		{
 			foreach($data_nhapkho as $item)
