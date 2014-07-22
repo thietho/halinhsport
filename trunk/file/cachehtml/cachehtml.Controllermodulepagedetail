@@ -1,0 +1,516 @@
+
+
+<h2></h2>
+<div class="ben-post">
+	<div class="ben-left product-left">
+    	        <div id="ben-icon-hot-detail" class="ben-icon">
+            <img src="http://localhost:81/halinhsport/view/skin1/image/icon/ico-hot.png" />
+        </div>
+                                    	        <div class="product-mainimage">
+        	<table>
+            	<tr valign="middle">
+                	<td id="product-preview" height="250px" align="center"><a class="zoom" href="http://localhost:81/halinhsport/file/cache/upload_1_800x800.png"><img  src="http://localhost:81/halinhsport/file/cache/upload_1_250x250.png" /></a></td>
+                </tr>
+            </table>
+	        
+        </div>
+        
+                
+        <div id="ben-galary" class="ben-center">
+            <table>
+                <tr>
+                    <td style="width:14px">
+                        <img class="ben-link" id="ben-prev" src="http://localhost:81/halinhsport/view/skin1/image/galary_button_prev.png" title="Áo bóng đá Adidas mẫu 8" alt="Áo bóng đá Adidas mẫu 8"/>
+                    </td>
+                    <td>
+                        <div style="overflow:hidden;width:248px;margin:0 auto;">
+                            <table id="ben-scroll">
+                                <tr>
+                                   
+                                                                        <td>
+                                        <img  id="icon-0" class="ben-icon-item" src="http://localhost:81/halinhsport/file/cache/upload_1_60x60.png" />
+                                    </td>
+                                                                    </tr>
+                            </table>
+                        </div>
+                        
+                    </td>
+                    <td style="width:14px">
+                        <img class="ben-link" id="ben-next" src="http://localhost:81/halinhsport/view/skin1/image/galary_button_next.png" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+<script language="javascript">
+$(document).ready(function() { 
+$(".ben-icon-item").click(function(){
+	var arr = this.id.split("-");
+	var key = arr[1];
+	$("#product-preview").html($("#preview-"+key).html());
+	$(".zoom").fancybox({
+			'overlayShow'	: true,
+			'transitionIn'	: 'elastic',
+			'transitionOut'	: 'elastic'
+		});
+});
+
+	
+	$('#ben-container').tabs({ fxSlide: true, fxFade: true, fxSpeed: 'slow' });
+	
+	$(".zoom").fancybox({
+			'overlayShow'	: true,
+			'transitionIn'	: 'elastic',
+			'transitionOut'	: 'elastic'
+		});
+});
+</script>
+<script language="javascript">
+var block1 = 62;
+var length = $("#ben-scroll").width();
+var view = 248;
+var move = true
+var movenext = true
+$("#ben-prev").click(function(){
+	movenext = true;
+	if(move == true)
+	{
+		move = false;
+		var left = $("#ben-scroll").css("margin-left").replace("px","");
+		//alert(left);
+		if(left < 0)
+		{
+			
+			$("#ben-scroll").animate({"marginLeft": "+="+ block1 +"px"}, "slow",function(){
+				/*left = $("#ben-scoll").css("margin-left").replace("px","");
+				if(left > 0)
+					$("#ben-scoll").css("margin-left","0px");*/
+				move = true;
+			});
+			
+			
+		}
+		else
+			move = true;
+	}
+		
+});
+$("#ben-next").click(function(){
+	length = $("#ben-scroll").width();
+	if(movenext == true)
+	{
+		movenext = false;
+		
+		var left = $("#ben-scroll").css("margin-left").replace("px","");
+		
+		if( parseInt(length) + parseInt(left) > view)
+			$("#ben-scroll").animate({"marginLeft": "-="+ block1 +"px"}, "slow",function(){
+				movenext = true;
+			});
+	}
+	
+});
+</script>
+        <div style="display:none">
+                        <div  id="preview-0">
+                <a class="zoom" href="http://localhost:81/halinhsport/file/cache/upload_1_800x800.png"><img src="http://localhost:81/halinhsport/file/cache/upload_1_250x250.png" /></a>
+            </div>
+                    </div>
+     
+    </div>
+    <div class="ben-right product-right">
+        <h2>Áo bóng đá Adidas mẫu 8</h2>
+                
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>        
+        
+        <div class="fb-like" data-href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-8.html" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+        
+        <div class="ben-post-body">
+        	<p>
+            	<table>
+                	                	<tr>
+                    	<td width="25%"><strong>Loại sản phẩm:</strong></td>
+                        <td>
+                        	                            Đặt may áo bóng đá yêu cầu<br />                                                    </td>
+                    </tr>
+                    <tr>
+                    	<td><strong>Nhản hiệu:</strong></td>
+                        <td>
+                        	
+                            <a href="http://localhost:81/halinhsport/brandinfor/Nike.html" title="Nike">Nike</a>
+                            
+                        </td>
+                    </tr>
+                                                                                                    <tr>
+                    	<td><strong>Giá:</strong></td>
+                        <td>
+                        	                                                                                    <span class="product-pricepromotion">
+                            90,000 VNĐ                            </span>
+                                                            
+                            <span  class="product-price product-price-no">110,000 VNĐ</span>
+                            <input type="button" class="cart-order" onclick="cart.add('2013111')" value="Đặt hàng">
+                            
+                        </td>
+                    </tr>
+                                    </table>
+            	
+                
+            </p>
+            <p class="short_intro">
+            	<p>
+	&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8&Aacute;o b&oacute;ng đ&aacute; Adidas mẫu 8</p>                
+            </p>
+                    </div>
+        
+    </div>
+    <div class="clearer">&nbsp;</div>
+
+    <div class="ben-hline"></div>
+    <p>
+            </p>
+    
+    <p class="ben-text-right">
+        <b></b>
+    </p>
+            
+    
+    
+    
+    <div class="clearer">&nbsp;</div>
+</div>
+
+<div class="ben-section-breadcrumb">Nhận xét về </div>
+<div class="ben-post ben-comment">
+    </div><div class="ben-section-breadcrumb">Gửi Nhận xét về Áo bóng đá Adidas mẫu 8</div>
+<div id="comment-warning" class="ben-error ben-hidden"></div>
+<div class="ben-section-content">
+	<form id="frmComment">
+    <input type="hidden" name="mediaid" value="2013111" />
+    <div class="ben-post ben-comment">
+        <table>
+            <tr>
+                <td width="260px">
+                    <table>
+                        <tr>
+                            <td>Họ tên:</td>
+                            <td><input type="text" class="ben-textbox" name="fullname" /></td>
+                        </tr>
+                        <tr>
+                            <td>Đánh giá:</td>
+                            <td>
+                                <select name="level" class="ben-textbox">
+                                    <option value="">Chưa đánh giá</option>
+                                                                        <option value="1">1 sao</option>
+                                                                        <option value="2">2 sao</option>
+                                                                        <option value="3">3 sao</option>
+                                                                        <option value="4">4 sao</option>
+                                                                        <option value="5">5 sao</option>
+                                                                    </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><input type="text" class="ben-textbox" name="email"/></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td width="70px">Nội dung:</td>
+                            <td><textarea name="description" class="ben-textbox"></textarea></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <input type="button" class="ben-button ben-center" value="Gửi nhận xét" onclick="sendComment()"/>
+    </div>
+    </form>
+</div>
+    
+<script language="javascript">
+$(".product-icon").click(function(){
+	var arr = this.id.split("-");
+	var key = arr[1];
+	$("#product-preview").attr("src",$("#preview-"+key).attr("src"));
+});
+
+
+$(document).ready(function() { 
+	$('#subinfo').tabs({ fxSlide: true, fxFade: true, fxSpeed: 'slow' });
+	
+});
+function xemkhuyenmai(makhuyenmai)
+{
+		$("#ben-popup").attr('title','Thông tin khuyến mãi');
+				$( "#ben-popup" ).dialog({
+					autoOpen: false,
+					show: "blind",
+					hide: "explode",
+					width: 550,
+					height: 350,
+					modal: true,
+					close: function(event, ui)
+						{ 
+							
+						},
+					buttons: {
+						
+						
+						"Đóng": function() {
+							$( this ).dialog( "close" );
+							
+						}
+					}
+				});
+		$('#ben-popup-content').load(HTTP_SERVER+'?route=addon/media&id='+makhuyenmai,function(){
+			$("#ben-popup").dialog("open");	
+		});
+				
+}
+
+function sendComment()
+{
+	$.blockUI({ message: "<h1>Please wait...</h1>" }); 
+	
+	$.post("http://localhost:81/halinhsport/?route=module/comment/sendComment", $("#frmComment").serialize(),
+		function(data){
+			if(data == "true")
+			{
+				$('#comment-warning').html("Bạn đã gui nhận xét thành công. Chúng tôi sẻ kiểm duyệt nội dung của bạn trước khi hiện lên website").show('slow');
+				$('#frmComment').hide();
+			}
+			else
+			{
+				
+				$('#comment-warning').html(data).show('slow');
+				
+				
+			}
+			$.unblockUI();
+		}
+	);		
+}
+</script>
+<div class="ben-section-breadcrumb">Sản phẩm cùng nhãn hiệu</div>
+<div class="ben-section-content">
+	        
+    	<div id="listpoduct">
+    	<table>
+        	            <tr>
+            	                <td width="25%">
+                	                                                             <div class="ben-left product link_hover" data-tooltip="sticky1" ref="http://localhost:81/halinhsport/file/cache/upload_1_450x450.png" title="Áo bóng đá Adidas mẫu 8" price="90,000 VNĐ" summary="&lt;p&gt;
+	&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&amp;Aacute;o b&amp;oacute;ng đ&amp;aacute; Adidas mẫu 8&lt;/p&gt;">
+                        <table>
+                            <tr class="product-list-image">
+                                <td>
+                                                                        <div class="flagdiscount ben-icon"></div>
+                                                                                                            <div id="ben-icon-hot" class="ben-icon">
+                                        <img src="http://localhost:81/halinhsport/view/skin1/image/icon/ico-hot.png" />
+                                    </div>
+                                                                                                                                                                                    <a class="islink" href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-8.html" title="Áo bóng đá Adidas mẫu 8"><img src="http://localhost:81/halinhsport/file/cache/upload_1_170x170.png" class='ben-center' alt="Áo bóng đá Adidas mẫu 8" title="Áo bóng đá Adidas mẫu 8"/></a>
+                                    
+                                                                            
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center">
+                                        <a href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-8.html" title="Áo bóng đá Adidas mẫu 8">
+                                            <h6>
+                                                Áo bóng đá Adidas mẫu 8                                            </h6>
+                                                                                    </a>
+                                    </div>
+                                                                                                            <div align="center" class="product-pricepromotion">
+                                            
+                                                                                                                                    90,000 VNĐ                                                                                </div>
+                                                                        <div align="center" class="product-price product-price-no">110,000 VNĐ</div>
+                                    <div align="center">
+                                        <!--<a href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-8.html" title="Áo bóng đá Adidas mẫu 8">Chi tiết</a>-->
+                                        
+                                        <input type="button" class="cart-order" value="Đặt hàng" onclick="cart.add('2013111')"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        
+                        
+                        
+                    </div>
+                                        </td>
+                                <td width="25%">
+                	                                                             <div class="ben-left product link_hover" data-tooltip="sticky1" ref="http://localhost:81/halinhsport/file/cache/upload_11_450x450.png" title="Áo bóng đá Adidas mẫu 7" price="110,000 VNĐ" summary="">
+                        <table>
+                            <tr class="product-list-image">
+                                <td>
+                                                                                                            <div id="ben-icon-hot" class="ben-icon">
+                                        <img src="http://localhost:81/halinhsport/view/skin1/image/icon/ico-hot.png" />
+                                    </div>
+                                                                                                                                                                                    <a class="islink" href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-7.html" title="Áo bóng đá Adidas mẫu 7"><img src="http://localhost:81/halinhsport/file/cache/upload_11_170x170.png" class='ben-center' alt="Áo bóng đá Adidas mẫu 7" title="Áo bóng đá Adidas mẫu 7"/></a>
+                                    
+                                                                            
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center">
+                                        <a href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-7.html" title="Áo bóng đá Adidas mẫu 7">
+                                            <h6>
+                                                Áo bóng đá Adidas mẫu 7                                            </h6>
+                                                                                    </a>
+                                    </div>
+                                                                                                            <div align="center" class="product-price ">110,000 VNĐ</div>
+                                    <div align="center">
+                                        <!--<a href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-7.html" title="Áo bóng đá Adidas mẫu 7">Chi tiết</a>-->
+                                        
+                                        <input type="button" class="cart-order" value="Đặt hàng" onclick="cart.add('2013112')"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        
+                        
+                        
+                    </div>
+                                        </td>
+                                <td width="25%">
+                	                                                             <div class="ben-left product link_hover" data-tooltip="sticky1" ref="http://localhost:81/halinhsport/file/cache/upload_12_450x450.png" title="Áo bóng đá Adidas mẫu 6" price="110,000 VNĐ" summary="">
+                        <table>
+                            <tr class="product-list-image">
+                                <td>
+                                                                                                            <div id="ben-icon-hot" class="ben-icon">
+                                        <img src="http://localhost:81/halinhsport/view/skin1/image/icon/ico-hot.png" />
+                                    </div>
+                                                                                                                                                                                    <a class="islink" href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-6.html" title="Áo bóng đá Adidas mẫu 6 - fvsdg"><img src="http://localhost:81/halinhsport/file/cache/upload_12_170x170.png" class='ben-center' alt="Áo bóng đá Adidas mẫu 6" title="Áo bóng đá Adidas mẫu 6"/></a>
+                                    
+                                                                            
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center">
+                                        <a href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-6.html" title="Áo bóng đá Adidas mẫu 6 - fvsdg">
+                                            <h6>
+                                                Áo bóng đá Adidas mẫu 6                                            </h6>
+                                            <h6>fvsdg</h6>                                        </a>
+                                    </div>
+                                                                                                            <div align="center" class="product-price ">110,000 VNĐ</div>
+                                    <div align="center">
+                                        <!--<a href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-6.html" title="Áo bóng đá Adidas mẫu 6 - fvsdg">Chi tiết</a>-->
+                                        
+                                        <input type="button" class="cart-order" value="Đặt hàng" onclick="cart.add('2013113')"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        
+                        
+                        
+                    </div>
+                                        </td>
+                                <td width="25%">
+                	                                                             <div class="ben-left product link_hover" data-tooltip="sticky1" ref="http://localhost:81/halinhsport/file/cache/upload_mau5_450x450.png" title="Áo bóng đá Adidas mẫu 5" price="110,000 VNĐ" summary="">
+                        <table>
+                            <tr class="product-list-image">
+                                <td>
+                                                                                                            <div id="ben-icon-hot" class="ben-icon">
+                                        <img src="http://localhost:81/halinhsport/view/skin1/image/icon/ico-hot.png" />
+                                    </div>
+                                                                                                                                                                                    <a class="islink" href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-5.html" title="Áo bóng đá Adidas mẫu 5 - 34234"><img src="http://localhost:81/halinhsport/file/cache/upload_mau5_170x170.png" class='ben-center' alt="Áo bóng đá Adidas mẫu 5" title="Áo bóng đá Adidas mẫu 5"/></a>
+                                    
+                                                                            
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center">
+                                        <a href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-5.html" title="Áo bóng đá Adidas mẫu 5 - 34234">
+                                            <h6>
+                                                Áo bóng đá Adidas mẫu 5                                            </h6>
+                                            <h6>34234</h6>                                        </a>
+                                    </div>
+                                                                                                            <div align="center" class="product-price ">110,000 VNĐ</div>
+                                    <div align="center">
+                                        <!--<a href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-5.html" title="Áo bóng đá Adidas mẫu 5 - 34234">Chi tiết</a>-->
+                                        
+                                        <input type="button" class="cart-order" value="Đặt hàng" onclick="cart.add('2013114')"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        
+                        
+                        
+                    </div>
+                                        </td>
+                            </tr>
+                        <tr>
+            	                <td width="25%">
+                	                                                             <div class="ben-left product link_hover" data-tooltip="sticky1" ref="http://localhost:81/halinhsport/file/cache/upload_mau4_450x450.png" title="Áo bóng đá Adidas mẫu 4" price="110,000 VNĐ" summary="">
+                        <table>
+                            <tr class="product-list-image">
+                                <td>
+                                                                                                            <div id="ben-icon-hot" class="ben-icon">
+                                        <img src="http://localhost:81/halinhsport/view/skin1/image/icon/ico-hot.png" />
+                                    </div>
+                                                                                                                                                                                    <a class="islink" href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-4.html" title="Áo bóng đá Adidas mẫu 4 - C1011"><img src="http://localhost:81/halinhsport/file/cache/upload_mau4_170x170.png" class='ben-center' alt="Áo bóng đá Adidas mẫu 4" title="Áo bóng đá Adidas mẫu 4"/></a>
+                                    
+                                                                            
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center">
+                                        <a href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-4.html" title="Áo bóng đá Adidas mẫu 4 - C1011">
+                                            <h6>
+                                                Áo bóng đá Adidas mẫu 4                                            </h6>
+                                            <h6>C1011</h6>                                        </a>
+                                    </div>
+                                                                                                            <div align="center" class="product-price ">110,000 VNĐ</div>
+                                    <div align="center">
+                                        <!--<a href="http://localhost:81/halinhsport/dat-may-ao-bong-da-yeu-cau/ao-bong-da-adidas-mau-4.html" title="Áo bóng đá Adidas mẫu 4 - C1011">Chi tiết</a>-->
+                                        
+                                        <input type="button" class="cart-order" value="Đặt hàng" onclick="cart.add('2013115')"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        
+                        
+                        
+                    </div>
+                                        </td>
+                                <td width="25%">
+                	                                                            </td>
+                                <td width="25%">
+                	                                                            </td>
+                                <td width="25%">
+                	                                                            </td>
+                            </tr>
+                    </table>
+                    
+        
+    </div>    
+
+
+	<div class="clearer">&nbsp;</div>
+    <script language="javascript">
+function setViewType(type)
+{
+	$.get("?route=module/product/setViewType&viewtype="+type,function(){
+		window.location.reload();	
+	});	
+}
+</script></div>
